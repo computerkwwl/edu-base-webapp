@@ -18,7 +18,7 @@
     [@b.col width="15%" property="education" title="培养层次"]${majorJournal.education.name}[/@]
     [@b.col width="15%" property="depart" title="部门"]${majorJournal.depart.name}[/@]
     [@b.col width="15%" property="duration" title="修读年限"]${majorJournal.duration}[/@]
-    [@b.col width="15%" property="disciplineCode" title="教育部代码"]${majorJournal.disciplineCode}[/@]
+    [@b.col width="15%" property="disciplineCode" title="教育部代码"]${majorJournal.disciplineCode!}[/@]
     [@b.col width="5%" property="beginOn" title="生效时间"]${majorJournal.beginOn!}[/@]
     [@b.col width="5%" property="endOn" title="失效时间"]${majorJournal.endOn!}[/@]
   [/@]

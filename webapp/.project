@@ -11,5 +11,6 @@
   <natures>
     <nature>org.eclipse.jdt.core.javanature</nature>
     <nature>org.scala-ide.sdt.core.scalanature</nature>
+    <nature>com.sysdeo.eclipse.tomcat.tomcatnature</nature>
   </natures>
 </projectDescription>

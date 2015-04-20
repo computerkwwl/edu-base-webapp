@@ -27,11 +27,13 @@
       items1st=labels items2nd= project.labels 
       option="id,name"/]
     [@b.select2 label="学生类别列表" name1st="typesId1st" name2nd="typesId2nd" 
-      items1st=types items2nd= project.types 
+      items1st=types items2nd= project.stdTypes 
       option="id,name"/]
     [@b.select2 label="小节设置" name1st="timeSettingsId1st" name2nd="timeSettingsId2nd" 
       items1st=timeSettings items2nd= project.timeSettings 
       option="id,name"/]
+    [#--
+    --]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
     [/@]

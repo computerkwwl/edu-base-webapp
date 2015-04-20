@@ -1,6 +1,6 @@
 [#ftl]
 [@b.head/]
-[@b.toolbar title="修改学位"]bar.addBack();[/@]
+[@b.toolbar title="修改课程"]bar.addBack();[/@]
 [@b.tabs]
   [@b.form action="!update?id=${course.id}" theme="list"]
     [@b.textfield name="course.code" label="代码" value="${course.code!}" required="true" maxlength="20"/]
@@ -34,9 +34,6 @@
       option="id,name"/]
     [@b.select2 label="先修课程" name1st="prerequisitesId1st" name2nd="prerequisitesId2nd" 
       items1st=prerequisites items2nd= course.prerequisites 
-      option="id,name"/]
-    [@b.select2 label="小项课程" name1st="subcoursesId1st" name2nd="subcoursesId2nd" 
-      items1st=subcourses items2nd= course.subcourses 
       option="id,name"/]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]

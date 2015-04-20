@@ -44,9 +44,6 @@ class CourseAction extends RestfulAction[Course] {
     val prerequisites = findItems(classOf[Course])
     put("prerequisites", prerequisites)
 
-    val subcourses = findItems(classOf[Course])
-    put("subcourses", subcourses)
-
     super.editSetting(entity)
   }
 

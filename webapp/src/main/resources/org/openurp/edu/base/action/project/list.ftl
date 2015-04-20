@@ -11,14 +11,14 @@
     [@b.col width="15%" property="name" title="名称"][@b.a href="!info?id=${project.id}"]${project.name}[/@][/@]
     [@b.col width="10%" property="school" title="适用学校"]${project.school.name}[/@]
     [@b.col width="5%" property="minor" title="是否辅修"]${(project.minor?string("是","否"))!}[/@]
-    [@b.col width="20%" property="departments" title="部门列表"]
-    [#list project.departments as department]
-        ${department.name!}
+    [@b.col width="20%" title="部门列表"]
+      [#list project.departments as department]
+        ${department.name}
         [#if department_has_next]<br>[/#if]
       [/#list]
-      [/@]
-    [@b.col width="20%" property="types" title="学生类别"]
-      [#list project.types as type]
+    [/@]
+    [@b.col width="20%" title="学生类别"]
+      [#list project.stdTypes as type]
         ${type.name!}
         [#if type_has_next]<br>[/#if]
       [/#list]

@@ -6,15 +6,15 @@
 <table class="infoTable">
    <tr>
     <td class="title" width="20%">项目名称</td>
-    <td class="content">${projectCode.project.name!}</td>
+    <td class="content">${projectCodeBean.project.name!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">代码元</td>
-    <td class="content">${projectCode.meta.name!}</td>
+    <td class="content">${projectCodeBean.meta.name!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">代码id</td>
-    <td class="content">${projectCode.codeId!}</td>
+    <td class="content">${projectCodeBean.codeId!}</td>
   </tr>
 </table>
 

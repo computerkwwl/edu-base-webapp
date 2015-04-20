@@ -16,16 +16,11 @@
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/org/openurp/platform/openurp-platform-web/0.0.2-SNAPSHOT/openurp-platform-web-0.0.2-SNAPSHOT.jar" sourcepath="M2_REPO/org/openurp/platform/openurp-platform-web/0.0.2-SNAPSHOT/openurp-platform-web-0.0.2-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-core/0.2.6/beangle-webmvc-core-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-core/0.2.6/beangle-webmvc-core-0.2.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-api/0.2.6/beangle-webmvc-api-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-api/0.2.6/beangle-webmvc-api-0.2.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-core/0.2.7-SNAPSHOT/beangle-webmvc-core-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-core/0.2.7-SNAPSHOT/beangle-webmvc-core-0.2.7-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-api/0.2.7-SNAPSHOT/beangle-webmvc-api-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-api/0.2.7-SNAPSHOT/beangle-webmvc-api-0.2.7-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/beangle/commons/beangle-commons-core/4.2.4/beangle-commons-core-4.2.4.jar" sourcepath="M2_REPO/org/beangle/commons/beangle-commons-core/4.2.4/beangle-commons-core-4.2.4-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/commons/beangle-commons-core/4.2.4/beangle-commons-core-4.2.4-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/commons/beangle-commons-web/4.2.1/beangle-commons-web-4.2.1.jar" sourcepath="M2_REPO/org/beangle/commons/beangle-commons-web/4.2.1/beangle-commons-web-4.2.1-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/commons/beangle-commons-web/4.2.1/beangle-commons-web-4.2.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7-sources.jar">
@@ -33,13 +28,14 @@
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/commons/beangle-commons-web/4.2.4-SNAPSHOT/beangle-commons-web-4.2.4-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/commons/beangle-commons-web/4.2.4-SNAPSHOT/beangle-commons-web-4.2.4-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar" sourcepath="M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-bootstrap-ui/0.2.6/beangle-webmvc-bootstrap-ui-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-bootstrap-ui/0.2.6/beangle-webmvc-bootstrap-ui-0.2.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-webxml-plugin/0.2.6/beangle-webmvc-webxml-plugin-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-webxml-plugin/0.2.6/beangle-webmvc-webxml-plugin-0.2.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-bootstrap-ui/0.2.7-SNAPSHOT/beangle-webmvc-bootstrap-ui-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-bootstrap-ui/0.2.7-SNAPSHOT/beangle-webmvc-bootstrap-ui-0.2.7-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-webxml-plugin/0.2.7-SNAPSHOT/beangle-webmvc-webxml-plugin-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-webxml-plugin/0.2.7-SNAPSHOT/beangle-webmvc-webxml-plugin-0.2.7-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/beangle/data/beangle-data-jpa/4.2.1/beangle-data-jpa-4.2.1.jar" sourcepath="M2_REPO/org/beangle/data/beangle-data-jpa/4.2.1/beangle-data-jpa-4.2.1-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/data/beangle-data-jpa/4.2.1/beangle-data-jpa-4.2.1-javadoc.jar!/" name="javadoc_location"/>
@@ -139,11 +135,11 @@
       <attribute value="jar:file:/home/xinzhou/.m2/repository/net/sf/ehcache/ehcache-core/2.4.3/ehcache-core-2.4.3-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-entity-plugin/0.2.6/beangle-webmvc-entity-plugin-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-entity-plugin/0.2.6/beangle-webmvc-entity-plugin-0.2.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-tag/0.2.6/beangle-webmvc-tag-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-tag/0.2.6/beangle-webmvc-tag-0.2.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/template/beangle-template-freemarker/0.0.1/beangle-template-freemarker-0.0.1.jar" sourcepath="M2_REPO/org/beangle/template/beangle-template-freemarker/0.0.1/beangle-template-freemarker-0.0.1-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-entity-plugin/0.2.7-SNAPSHOT/beangle-webmvc-entity-plugin-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-entity-plugin/0.2.7-SNAPSHOT/beangle-webmvc-entity-plugin-0.2.7-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-tag/0.2.7-SNAPSHOT/beangle-webmvc-tag-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-tag/0.2.7-SNAPSHOT/beangle-webmvc-tag-0.2.7-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/template/beangle-template-freemarker/0.0.2/beangle-template-freemarker-0.0.2.jar" sourcepath="M2_REPO/org/beangle/template/beangle-template-freemarker/0.0.2/beangle-template-freemarker-0.0.2-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/template/beangle-template-freemarker/0.0.1/beangle-template-freemarker-0.0.1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/template/beangle-template-freemarker/0.0.2/beangle-template-freemarker-0.0.2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/freemarker/freemarker/2.3.20/freemarker-2.3.20.jar" sourcepath="M2_REPO/org/freemarker/freemarker/2.3.20/freemarker-2.3.20-sources.jar">
@@ -152,11 +148,7 @@
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/openurp/platform/openurp-platform-api/0.0.2-SNAPSHOT/openurp-platform-api-0.0.2-SNAPSHOT.jar" sourcepath="M2_REPO/org/openurp/platform/openurp-platform-api/0.0.2-SNAPSHOT/openurp-platform-api-0.0.2-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/security/beangle-security-core/4.0.6/beangle-security-core-4.0.6.jar" sourcepath="M2_REPO/org/beangle/security/beangle-security-core/4.0.6/beangle-security-core-4.0.6-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/security/beangle-security-core/4.0.6/beangle-security-core-4.0.6-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/security/beangle-security-core/4.0.7-SNAPSHOT/beangle-security-core-4.0.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/security/beangle-security-core/4.0.7-SNAPSHOT/beangle-security-core-4.0.7-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openurp/base/openurp-base-model/0.0.1/openurp-base-model-0.0.1.jar" sourcepath="M2_REPO/org/openurp/base/openurp-base-model/0.0.1/openurp-base-model-0.0.1-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/openurp/base/openurp-base-model/0.0.1/openurp-base-model-0.0.1-javadoc.jar!/" name="javadoc_location"/>
@@ -202,18 +194,15 @@
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/openurp/code/openurp-code-model-job/0.0.2/openurp-code-model-job-0.0.2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-serializer-plugin/0.2.6/beangle-webmvc-serializer-plugin-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-serializer-plugin/0.2.6/beangle-webmvc-serializer-plugin-0.2.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/security/beangle-security-cas/4.0.7-SNAPSHOT/beangle-security-cas-4.0.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/security/beangle-security-cas/4.0.7-SNAPSHOT/beangle-security-cas-4.0.7-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/security/beangle-security-web/4.0.7-SNAPSHOT/beangle-security-web-4.0.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/security/beangle-security-web/4.0.7-SNAPSHOT/beangle-security-web-4.0.7-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-serializer-plugin/0.2.7-SNAPSHOT/beangle-webmvc-serializer-plugin-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-serializer-plugin/0.2.7-SNAPSHOT/beangle-webmvc-serializer-plugin-0.2.7-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/beangle/data/beangle-data-serializer/4.2.1/beangle-data-serializer-4.2.1.jar" sourcepath="M2_REPO/org/beangle/data/beangle-data-serializer/4.2.1/beangle-data-serializer-4.2.1-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/data/beangle-data-serializer/4.2.1/beangle-data-serializer-4.2.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-config-plugin/0.2.6/beangle-webmvc-config-plugin-0.2.6.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-config-plugin/0.2.6/beangle-webmvc-config-plugin-0.2.6-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/beangle/security/beangle-security-web/4.0.6/beangle-security-web-4.0.6.jar" sourcepath="M2_REPO/org/beangle/security/beangle-security-web/4.0.6/beangle-security-web-4.0.6-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/home/xinzhou/.m2/repository/org/beangle/security/beangle-security-web/4.0.6/beangle-security-web-4.0.6-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/beangle/webmvc/beangle-webmvc-config-plugin/0.2.7-SNAPSHOT/beangle-webmvc-config-plugin-0.2.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/beangle/webmvc/beangle-webmvc-config-plugin/0.2.7-SNAPSHOT/beangle-webmvc-config-plugin-0.2.7-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final.jar" sourcepath="M2_REPO/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/xinzhou/.m2/repository/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final-javadoc.jar!/" name="javadoc_location"/>

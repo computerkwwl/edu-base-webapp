@@ -11,9 +11,11 @@ import org.openurp.edu.base.action.code.ExamStatusAction
 import org.openurp.edu.base.action.code.StdLabelAction
 import org.openurp.edu.base.action.code.ExamModeAction
 import org.openurp.edu.base.action.code.CourseTypeAction
+import org.beangle.commons.inject.PropertySource
+import org.openurp.security.RemoteAuthorizer
+import org.openurp.security.DaoUserStore
 
-
-class DefaultModule extends AbstractBindModule {
+class DefaultModule extends AbstractBindModule   {
 
   protected override def binding() {
     bind(classOf[AdminclassAction], classOf[MajorAction], classOf[DirectionAction], classOf[DirectionJournalAction], classOf[MajorJournalAction])
@@ -22,7 +24,8 @@ class DefaultModule extends AbstractBindModule {
     bind(classOf[CourseAction], classOf[CourseHourAction])
     bind(classOf[StdLabelAction], classOf[StdLabelTypeAction], classOf[StdTypeAction], classOf[StdStatusAction])
     bind(classOf[ExamModeAction], classOf[ExamStatusAction])
-    bind(classOf[CourseAbilityRateAction], classOf[CourseCategoryAction], classOf[CourseHourAction],classOf[CourseTypeAction])
+    bind(classOf[CourseAbilityRateAction], classOf[CourseCategoryAction], classOf[CourseTypeAction])
     bind(classOf[ScoreMarkStyleAction])
   }
+
 }
