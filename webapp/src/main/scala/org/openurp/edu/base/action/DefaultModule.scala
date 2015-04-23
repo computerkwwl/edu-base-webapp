@@ -26,6 +26,7 @@ class DefaultModule extends AbstractBindModule   {
     bind(classOf[ExamModeAction], classOf[ExamStatusAction])
     bind(classOf[CourseAbilityRateAction], classOf[CourseCategoryAction], classOf[CourseTypeAction])
     bind(classOf[ScoreMarkStyleAction])
+    bind(classOf[TeacherAction])
   }
 
 }
