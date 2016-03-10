@@ -202,24 +202,24 @@ class names:
 /home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/beangle/commons/lang/time/WeekStatePatch.scala -> org.beangle.commons.lang.time.WeekState
 /home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/beangle/commons/lang/time/WeekStatePatch.scala -> org.beangle.commons.lang.time.WeekState$
 /home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/beangle/data/jpa/hibernate/udt/WeekStateTypePatch.scala -> org.beangle.data.jpa.hibernate.udt.WeekStateType
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/AdminclassAction.scala -> org.openurp.edu.base.action.AdminclassAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/CourseAction.scala -> org.openurp.edu.base.action.CourseAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/CourseHourAction.scala -> org.openurp.edu.base.action.CourseHourAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/DefaultModule.scala -> org.openurp.edu.base.action.DefaultModule
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/DirectionAction.scala -> org.openurp.edu.base.action.DirectionAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/DirectionJournalAction.scala -> org.openurp.edu.base.action.DirectionJournalAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/MajorAction.scala -> org.openurp.edu.base.action.MajorAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/MajorJournalAction.scala -> org.openurp.edu.base.action.MajorJournalAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/ProjectAction.scala -> org.openurp.edu.base.action.ProjectAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/ProjectClassroomAction.scala -> org.openurp.edu.base.action.ProjectClassroomAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/ProjectCodeAction.scala -> org.openurp.edu.base.action.ProjectCodeAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.action.StudentAction
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.action.StudentAction$$anonfun$saveAndRedirect$1
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.action.StudentAction$$anonfun$saveBatchUpdateLabel$1
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.action.StudentAction$$anonfun$saveBatchUpdateLabel$1$$anonfun$apply$1
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.action.StudentAction$$anonfun$saveBatchUpdateLabel$2
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.action.StudentAction$$anonfun$saveBatchUpdateLabel$2$$anonfun$apply$2
-/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentJournalAction.scala -> org.openurp.edu.base.action.StudentJournalAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/AdminclassAction.scala -> org.openurp.edu.base.model.action.AdminclassAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/CourseAction.scala -> org.openurp.edu.base.model.action.CourseAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/CourseHourAction.scala -> org.openurp.edu.base.model.action.CourseHourAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/DefaultModule.scala -> org.openurp.edu.base.model.action.DefaultModule
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/DirectionAction.scala -> org.openurp.edu.base.model.action.DirectionAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/DirectionJournalAction.scala -> org.openurp.edu.base.model.action.DirectionJournalAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/MajorAction.scala -> org.openurp.edu.base.model.action.MajorAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/MajorJournalAction.scala -> org.openurp.edu.base.model.action.MajorJournalAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/ProjectAction.scala -> org.openurp.edu.base.model.action.ProjectAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/ProjectClassroomAction.scala -> org.openurp.edu.base.model.action.ProjectClassroomAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/ProjectCodeAction.scala -> org.openurp.edu.base.model.action.ProjectCodeAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.model.action.StudentAction
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.model.action.StudentAction$$anonfun$saveAndRedirect$1
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.model.action.StudentAction$$anonfun$saveBatchUpdateLabel$1
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.model.action.StudentAction$$anonfun$saveBatchUpdateLabel$1$$anonfun$apply$1
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.model.action.StudentAction$$anonfun$saveBatchUpdateLabel$2
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentAction.scala -> org.openurp.edu.base.model.action.StudentAction$$anonfun$saveBatchUpdateLabel$2$$anonfun$apply$2
+/home/xinzhou/workspace/openurp-webapp/edu-base/webapp/src/main/scala/org/openurp/edu/base/action/StudentJournalAction.scala -> org.openurp.edu.base.model.action.StudentJournalAction
 used names:
 0 items
 product stamps:
@@ -288,7 +288,7 @@ class names:
 /home/xinzhou/.m2/repository/org/openurp/base/openurp-base-model/0.0.1/openurp-base-model-0.0.1.jar -> org.openurp.base.Department
 /home/xinzhou/.m2/repository/org/openurp/code/openurp-code-model-edu/0.0.2/openurp-code-model-edu-0.0.2.jar -> org.openurp.code.edu.StudyType
 /home/xinzhou/.m2/repository/org/openurp/code/openurp-code-model-person/0.0.2/openurp-code-model-person-0.0.2.jar -> org.openurp.code.person.Gender
-/home/xinzhou/.m2/repository/org/openurp/edu/base/openurp-edu-base-model/0.0.1/openurp-edu-base-model-0.0.1.jar -> org.openurp.edu.base.Direction
+/home/xinzhou/.m2/repository/org/openurp/edu/base/openurp-edu-base-model/0.0.1/openurp-edu-base-model-0.0.1.jar -> org.openurp.edu.base.model.Direction
 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75-2.5.4.2.fc20.x86_64/jre/lib/rt.jar -> java.lang.Object
 internal apis:
 15 items

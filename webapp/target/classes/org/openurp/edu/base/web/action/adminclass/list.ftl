@@ -1,0 +1,21 @@
+[#ftl]
+[@b.head/]
+[@b.grid items=adminclasses var="adminclass"]
+  [@b.gridbar]
+    bar.addItem("${b.text("action.new")}",action.add());
+    bar.addItem("${b.text("action.modify")}",action.edit());
+    bar.addItem("${b.text("action.delete")}",action.remove("确认删除?"));
+  [/@]
+  [@b.row]
+    [@b.boxcol /]
+    [@b.col width="7%" property="grade" title="年级"]${adminclass.grade!}[/@]
+    [@b.col width="8%" property="code" title="代码"]${adminclass.code}[/@]
+    [@b.col width="20%" property="name" title="名称"][@b.a href="!info?id=${adminclass.id}"]${adminclass.name}[/@][/@]
+    [@b.col width="15%" property="department" title="院系"]${(adminclass.department.name)!}[/@]
+    [@b.col width="20%" property="major" title="专业(方向)"]${(adminclass.major.name)!} ${(adminclass.direction.name)!}[/@]
+    [@b.col width="10%" property="stdType" title="学生类别"]${(adminclass.stdType.name)!}[/@]
+    [@b.col width="10%" property="stdCount" title="学籍有效人数"]${adminclass.stdCount!}[/@]
+    [@b.col width="10%" property="instructor" title="辅导员"]${(adminclass.instructor.person.name)!}[/@]
+  [/@]
+[/@]
+[@b.foot/]
