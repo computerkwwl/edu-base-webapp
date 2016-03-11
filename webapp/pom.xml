@@ -12,10 +12,6 @@
   <packaging>war</packaging>
   <name>Openurp Edu Base Webapp</name>
 
-<properties>
-  <beangle.webmvc.version>0.2.7-SNAPSHOT</beangle.webmvc.version>
-   <beangle.security.version>4.0.7-SNAPSHOT</beangle.security.version>
-</properties>
   <dependencies>
     <dependency>
       <groupId>org.openurp.platform.api</groupId>
@@ -69,15 +65,6 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-ehcache</artifactId>
       <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.beangle.security</groupId>
-      <artifactId>beangle-security-cas</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.beangle.template</groupId>
-      <artifactId>beangle-template-freemarker</artifactId>
-      <version>0.0.2</version>
     </dependency>
   </dependencies>
 </project>

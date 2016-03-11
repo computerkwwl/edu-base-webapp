@@ -1,19 +1,17 @@
-package org.openurp.edu.base.action.code
+package org.openurp.edu.base.web.action.code
 
-import org.beangle.data.jpa.dao.OqlBuilder
-import org.beangle.data.model.annotation.code
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.code.CourseAbilityRate
-import org.openurp.edu.base.code.CourseCategory
-import org.openurp.edu.base.code.CourseHourType
-import org.openurp.edu.base.code.CourseType
-import org.openurp.edu.base.code.ExamMode
-import org.openurp.edu.base.code.ExamStatus
-import org.openurp.edu.base.code.ScoreMarkStyle
-import org.openurp.edu.base.code.StdLabel
-import org.openurp.edu.base.code.StdLabelType
-import org.openurp.edu.base.code.StdStatus
-import org.openurp.edu.base.code.StdType
+import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.edu.base.code.model.StdType
+import org.openurp.edu.base.code.model.CourseHourType
+import org.openurp.edu.base.code.model.CourseType
+import org.openurp.edu.base.code.model.CourseCategory
+import org.openurp.edu.base.code.model.StdLabelType
+import org.openurp.edu.base.code.model.ExamMode
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.edu.base.code.model.StdLabel
+import org.openurp.edu.base.code.model.ExamStatus
+import org.openurp.edu.base.code.model.CourseAbilityRate
 
 class StdLabelAction extends RestfulAction[StdLabel] {
   override def editSetting(entity: StdLabel) = {
@@ -36,7 +34,7 @@ class StdTypeAction extends RestfulAction[StdType] {
     super.editSetting(entity)
   }
 }
-class StdStatusAction extends RestfulAction[StdStatus]
+//class StdStatusAction extends RestfulAction[StdStatus]
 
 class CourseAbilityRateAction extends RestfulAction[CourseAbilityRate]
 
@@ -50,4 +48,4 @@ class ScoreMarkStyleAction extends RestfulAction[ScoreMarkStyle]
 
 class ExamModeAction extends RestfulAction[ExamMode]
 
-class ExamStatusAction extends RestfulAction[ExamStatus] 
+class ExamStatusAction extends RestfulAction[ExamStatus]
