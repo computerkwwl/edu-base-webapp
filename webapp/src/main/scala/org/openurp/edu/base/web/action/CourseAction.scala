@@ -1,19 +1,17 @@
-package org.openurp.edu.base.action
+package org.openurp.edu.base.web.action
 
-import org.beangle.data.jpa.dao.OqlBuilder
+import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.CourseType
+import org.openurp.edu.base.code.model.CourseCategory
+import org.openurp.edu.base.model.Major
+import org.beangle.webmvc.entity.action.RestfulAction
+import org.openurp.edu.base.code.model.ExamMode
+import org.openurp.edu.base.model.Course
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.edu.base.code.model.Education
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.view.View
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.Department
-import org.openurp.code.edu.Education
-import org.openurp.edu.base.code.ScoreMarkStyle
-import org.openurp.edu.base.model.CourseBean
-import org.openurp.edu.base.code.CourseType
-import org.openurp.edu.base.code.CourseCategory
-import org.openurp.edu.base.Major
-import org.openurp.edu.base.code.ExamMode
-import org.openurp.edu.base.Course
-import org.beangle.commons.lang.JLong
 
 class CourseAction extends RestfulAction[Course] {
   override def editSetting(entity: Course) = {
@@ -54,19 +52,20 @@ class CourseAction extends RestfulAction[Course] {
     items
   }
   protected override def saveAndRedirect(entity: Course): View = {
-    val course = entity.asInstanceOf[CourseBean]
+    val course = entity.asInstanceOf[Course]
 
     course.majors.clear()
-    val majorIds = getAll("majorsId2nd", classOf[JLong])
+    //    val majorIds = getAll("majorsId2nd", classOf[JLong])
+    val majorIds = longIds("majorsId2nd")
     course.majors ++= entityDao.find(classOf[Major], majorIds)
 
     course.xmajors.clear()
-    val xmajorIds = getAll("xmajorsId2nd", classOf[JLong])
+    val xmajorIds = longIds("xmajorsId2nd")
     course.xmajors ++= entityDao.find(classOf[Major], xmajorIds)
 
-    course.prerequisites.clear()
-    val prerequisityIds = getAll("prerequisitesId2nd", classOf[java.lang.Long])
-    course.prerequisites ++= entityDao.find(classOf[Course], prerequisityIds)
+    //    course.prerequisites.clear()
+    //    val prerequisityIds = getAll("prerequisitesId2nd", classOf[java.lang.Long])
+    //    course.prerequisites ++= entityDao.find(classOf[Course], prerequisityIds)
 
     super.saveAndRedirect(entity)
   }

@@ -1,11 +1,11 @@
-package org.openurp.edu.base.action
+package org.openurp.edu.base.web.action
 
-import org.beangle.data.jpa.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.Major
-import org.openurp.edu.base.Project
-import org.openurp.code.edu.DisciplineCategory
+import org.openurp.edu.base.model.Major
+import org.openurp.edu.base.model.Project
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.code.edu.model.DisciplineCategory
 
 class MajorAction extends RestfulAction[Major] {
   override def editSetting(entity: Major) = {
@@ -55,5 +55,4 @@ class MajorAction extends RestfulAction[Major] {
   //  }
 
 }
-
 

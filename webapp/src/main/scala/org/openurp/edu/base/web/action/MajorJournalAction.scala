@@ -1,13 +1,13 @@
-package org.openurp.edu.base.action
+package org.openurp.edu.base.web.action
 
-import org.beangle.data.jpa.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.Department
-import org.openurp.edu.base.MajorJournal
-import org.openurp.edu.base.Major
-import org.openurp.code.edu.Education
-import org.openurp.code.edu.DisciplineCategory
+import org.openurp.edu.base.model.MajorJournal
+import org.openurp.edu.base.model.Major
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.edu.base.code.model.Education
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.DisciplineCategory
 
 class MajorJournalAction extends RestfulAction[MajorJournal] {
   override def editSetting(entity: MajorJournal) = {

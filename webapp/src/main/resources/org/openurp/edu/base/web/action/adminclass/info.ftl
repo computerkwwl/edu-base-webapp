@@ -1,6 +1,6 @@
 [#ftl]
 [@b.head/]
-[@b.toolbar title="学位信息"]
+[@b.toolbar title="行政班级信息"]
   bar.addBack("${b.text("action.back")}");
 [/@]
 <table class="infoTable">
@@ -14,7 +14,7 @@
   </tr>
   <tr>
     <td class="title" width="20%">简称</td>
-    <td class="content">${adminclass.abbreviation!}</td>
+    <td class="content">${adminclass.shortName!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">生效时间</td>

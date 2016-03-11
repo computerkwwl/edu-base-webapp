@@ -1,19 +1,18 @@
-package org.openurp.edu.base.action
+package org.openurp.edu.base.web.action
 
-import org.beangle.data.jpa.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.view.View
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.TimeSetting
-import org.openurp.base.Department
-import org.openurp.edu.base.code.StdType
-import org.openurp.base.Campus
-import org.openurp.base.School
-import org.openurp.edu.base.model.ProjectBean
-import org.openurp.edu.base.Project
-import org.openurp.edu.base.code.StdLabel
-import org.openurp.code.edu.Education
-import org.openurp.base.Calendar
+import org.openurp.edu.base.model.Project
+import org.openurp.base.model.TimeSetting
+import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.StdType
+import org.openurp.base.model.Campus
+import org.openurp.base.model.School
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.edu.base.code.model.StdLabel
+import org.openurp.edu.base.code.model.Education
+import org.openurp.base.model.Calendar
 
 class ProjectAction extends RestfulAction[Project] {
   override def editSetting(entity: Project) = {
@@ -41,8 +40,6 @@ class ProjectAction extends RestfulAction[Project] {
     val timeSettings = findItems(classOf[TimeSetting])
     put("timeSettings", timeSettings)
 
- 
-    
     super.editSetting(entity)
   }
 
@@ -53,26 +50,26 @@ class ProjectAction extends RestfulAction[Project] {
     items
   }
   protected override def saveAndRedirect(entity: Project): View = {
-    val project = entity.asInstanceOf[ProjectBean]
+    val project = entity.asInstanceOf[Project]
 
     project.campuses.clear()
-    val campusIds = getAll("campusesId2nd", classOf[Integer])
+    val campusIds = ids("campusesId2nd", classOf[Int])
     project.campuses ++= entityDao.find(classOf[Campus], campusIds)
 
     project.departments.clear()
-    val departmentIds = getAll("departmentsId2nd", classOf[Integer])
+    val departmentIds = ids("departmentsId2nd", classOf[Int])
     project.departments ++= entityDao.find(classOf[Department], departmentIds)
 
     project.educations.clear()
-    val educationIds = getAll("educationsId2nd", classOf[Integer])
+    val educationIds = ids("educationsId2nd", classOf[Int])
     project.educations ++= entityDao.find(classOf[Education], educationIds)
 
-    project.labels.clear()
-    val labelsIds = getAll("labelsId2nd", classOf[Integer])
-    project.labels ++= entityDao.find(classOf[StdLabel], labelsIds)
+    //    project.labels.clear()
+    //    val labelsIds = getAll("labelsId2nd", classOf[Integer])
+    //    project.labels ++= entityDao.find(classOf[StdLabel], labelsIds)
 
     project.timeSettings.clear()
-    val timeSettingsIds = getAll("timeSettingsId2nd", classOf[Integer])
+    val timeSettingsIds = ids("timeSettingsId2nd", classOf[Int])
     project.timeSettings ++= entityDao.find(classOf[TimeSetting], timeSettingsIds)
 
     super.saveAndRedirect(entity)

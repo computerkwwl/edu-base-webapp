@@ -1,12 +1,12 @@
-package org.openurp.edu.base.action
+package org.openurp.edu.base.web.action
 
-import org.beangle.data.jpa.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.Department
-import org.openurp.edu.base.DirectionJournal
-import org.openurp.edu.base.Direction
-import org.openurp.code.edu.Education
+import org.openurp.edu.base.model.DirectionJournal
+import org.openurp.edu.base.model.Direction
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.edu.base.code.model.Education
+import org.openurp.base.model.Department
 
 class DirectionJournalAction extends RestfulAction[DirectionJournal] {
   override def editSetting(entity: DirectionJournal) = {
@@ -31,9 +31,4 @@ class DirectionJournalAction extends RestfulAction[DirectionJournal] {
   }
 
 }
-
-
-
-
-
 
