@@ -21,18 +21,23 @@ import org.openurp.edu.base.web.action.code.ExamStatusAction
 import org.openurp.edu.base.web.action.code.StdLabelAction
 import org.openurp.edu.base.web.action.code.ExamModeAction
 import org.openurp.edu.base.web.action.code.CourseTypeAction
+import org.openurp.edu.base.web.action.code.CourseHourTypeAction
+import org.openurp.edu.base.web.action.StudentStateAction
+import org.openurp.edu.base.web.action.IndexAction
+import org.openurp.edu.base.web.action.MajorDisciplineAction
 
 class DefaultModule extends AbstractBindModule {
 
   protected override def binding() {
-    bind(classOf[AdminclassAction], classOf[MajorAction], classOf[DirectionAction], classOf[DirectionJournalAction], classOf[MajorJournalAction])
+    bind(classOf[AdminclassAction], classOf[MajorAction], classOf[DirectionAction], classOf[DirectionJournalAction], classOf[MajorJournalAction], classOf[MajorDisciplineAction])
     bind(classOf[ProjectAction], classOf[ProjectCodeAction])
-    bind(classOf[StudentAction])
-    bind(classOf[CourseAction], classOf[CourseHourAction])
+    bind(classOf[StudentAction], classOf[StudentStateAction])
+    bind(classOf[CourseAction], classOf[CourseHourAction], classOf[CourseHourTypeAction])
     bind(classOf[StdLabelAction], classOf[StdLabelTypeAction], classOf[StdTypeAction])
     bind(classOf[ExamModeAction], classOf[ExamStatusAction])
     bind(classOf[CourseAbilityRateAction], classOf[CourseCategoryAction], classOf[CourseTypeAction])
     bind(classOf[ScoreMarkStyleAction])
     bind(classOf[TeacherAction])
+    bind(classOf[IndexAction])
   }
 }

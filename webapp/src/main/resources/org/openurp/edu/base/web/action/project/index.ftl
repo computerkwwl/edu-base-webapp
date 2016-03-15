@@ -7,10 +7,10 @@
     [@b.form name="projectSearchForm" action="!search" target="projectlist" title="ui.searchForm" theme="search"]
       
       [@b.textfields names="project.name;名称"/]
-      <input type="hidden" name="orderBy" value="project.name"/>
+      <input type="hidden" name="orderBy" value="project.code"/>
     [/@]
     </td>
-    <td class="index_content">[@b.div id="projectlist" href="!search?orderBy=project.id"/]
+    <td class="index_content">[@b.div id="projectlist" href="!search?orderBy=project.code"/]
     </td>
   </tr>
 </table>

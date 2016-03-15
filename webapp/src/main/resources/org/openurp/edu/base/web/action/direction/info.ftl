@@ -17,6 +17,10 @@
     <td class="content">${direction.enName!}</td>
   </tr>
   <tr>
+    <td class="title" width="20%">专业</td>
+    <td class="content">${direction.major.name!}</td>
+  </tr>
+  <tr>
     <td class="title" width="20%">生效时间</td>
     <td class="content" >${direction.beginOn!}</td>
   </tr>
@@ -27,10 +31,6 @@
   <tr>
     <td class="title" width="20%">备注</td>
     <td class="content">${direction.remark!}</td>
-  </tr>
-  <tr>
-    <td class="title" width="20%">专业</td>
-    <td class="content">${direction.major.name!}</td>
   </tr>
 </table>
 

@@ -23,6 +23,7 @@ import org.beangle.data.dao.OqlBuilder
 import org.openurp.edu.base.code.model.StdLabel
 import org.openurp.code.person.model.Gender
 import org.openurp.code.edu.model.StudyType
+import org.openurp.edu.base.model.StudentState
 
 class StudentAction extends RestfulAction[Student] {
 
@@ -39,6 +40,9 @@ class StudentAction extends RestfulAction[Student] {
 
     val majors = findItems(classOf[Major])
     put("majors", majors)
+
+    val states = findItems(classOf[StudentState])
+    put("states", states)
 
     val majorDeparts = findItems(classOf[Department])
     put("majorDeparts", majorDeparts)
@@ -104,7 +108,7 @@ class StudentAction extends RestfulAction[Student] {
 
   private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
     val query = OqlBuilder.from(clazz)
-    query.orderBy("name")
+    //    query.orderBy("name")
     val items = entityDao.search(query)
     items
   }

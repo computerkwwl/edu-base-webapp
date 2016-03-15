@@ -2,7 +2,8 @@
 [@b.head/]
 [@b.toolbar title="修改学生分类标签"]bar.addBack();[/@]
 [@b.tabs]
-  [@b.form action="!update?id=${stdLabel.id}" theme="list"]
+  [#assign sa][#if stdLabel.id??]!update?id=${stdLabel.id!}[#else]!save[/#if][/#assign]
+  [@b.form action=sa theme="list"]
     [@b.textfield name="stdLabel.code" label="代码" value="${stdLabel.code!}" required="true" maxlength="20"/]
     [@b.textfield name="stdLabel.name" label="名称" value="${stdLabel.name!}" required="true" maxlength="20"/]
     [@b.select name="stdLabel.labelType.id" label="标签类型" value="${(stdLabel.labelType.id)!}" required="true" 

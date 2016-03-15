@@ -2,12 +2,13 @@
 [@b.head/]
 [@b.toolbar title="修改项目基础代码配置"]bar.addBack();[/@]
 [@b.tabs]
-  [@b.form action="!update?id=${projectCodeBean.id}" theme="list"]
-    [@b.select name="projectCodeBean.project.id" label="项目名称" value="${(projectCodeBean.project.id)!}" required="true" 
-               style="width:200px;" items=projects option="id,name" empty="..."/]
-    [@b.select name="projectCodeBean.meta.id" label="代码元" value="${(projectCodeBean.meta.id)!}" required="true" 
+  [#assign sa][#if projectCode.id??]!update?id=${projectCode.id!}[#else]!save[/#if][/#assign]
+  [@b.form action=sa theme="list"]
+    [@b.select name="projectCode.project.id" label="项目名称" value="${(projectCode.project.id)!}" required="true" 
+               style="width:200px;" items=projects option="id,name" empty="..."  disabled="true"/]
+    [@b.select name="projectCode.meta.id" label="代码元" value="${(projectCode.meta.id)!}" required="true" 
                style="width:200px;" items=metas option="id,name" empty="..."/]
-    [@b.textfield name="projectCodeBean.codeId" label="代码ID" value="${projectCodeBean.codeId!}" required="true" maxlength="30"/]
+    [@b.textfield name="projectCode.codeId" label="代码ID" value="${projectCode.codeId!}" required="true" maxlength="30"/]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
     [/@]

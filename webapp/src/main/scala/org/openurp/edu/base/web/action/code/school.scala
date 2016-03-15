@@ -25,15 +25,7 @@ class StdLabelAction extends RestfulAction[StdLabel] {
 
 class StdLabelTypeAction extends RestfulAction[StdLabelType]
 
-class StdTypeAction extends RestfulAction[StdType] {
-  override def editSetting(entity: StdType) = {
-    val query = OqlBuilder.from(classOf[StdLabelType])
-    query.orderBy("name")
-    val labelTypes = entityDao.search(query)
-    put("labelTypes", labelTypes)
-    super.editSetting(entity)
-  }
-}
+class StdTypeAction extends RestfulAction[StdType]
 //class StdStatusAction extends RestfulAction[StdStatus]
 
 class CourseAbilityRateAction extends RestfulAction[CourseAbilityRate]

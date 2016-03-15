@@ -8,8 +8,7 @@
       [@b.textfields names="major.code;代码"/]
       [@b.textfields names="major.name;名称"/]
       [@b.textfields names="major.project.name;项目名称"/]
-      [@b.textfields names="major.category.name;学科门类"/]
-      <input type="hidden" name="orderBy" value="major.name"/>
+      <input type="hidden" name="orderBy" value="major.code"/>
     [/@]
     </td>
     <td class="index_content">[@b.div id="majorlist" href="!search?orderBy=major.code"/]

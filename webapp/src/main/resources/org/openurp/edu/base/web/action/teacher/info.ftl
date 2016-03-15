@@ -10,11 +10,7 @@
   </tr>
   <tr>
     <td class="title" width="20%">名称</td>
-    <td class="content">${teacher.name}</td>
-  </tr>
-  <tr>
-    <td class="title" width="20%">毕业学校</td>
-    <td class="content">${teacher.school!}</td>
+    <td class="content">${teacher.person.name}</td>
   </tr>
   <tr>
     <td class="title" width="20%">生效时间</td>
@@ -27,10 +23,6 @@
   <tr>
     <td class="title" width="20%">备注</td>
     <td class="content">${teacher.remark!}</td>
-  </tr>
-  <tr>
-    <td class="title" width="20%">专业</td>
-    <td class="content">${teacher.major.name!}</td>
   </tr>
 </table>
 

@@ -1,4 +1,4 @@
-package org.openurp.edu.base.model.action
+package org.openurp.edu.base.web.action
 
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.entity.action.RestfulAction
@@ -7,9 +7,11 @@ import org.openurp.edu.base.model.Major
 import org.openurp.edu.base.model.Direction
 import org.beangle.data.dao.OqlBuilder
 import org.openurp.base.model.Department
+import org.openurp.edu.base.model.StudentState
+import org.openurp.code.edu.model.StudentStatus
 
-class StudentJournalAction extends RestfulAction[StudentJournal] {
-  override def editSetting(entity: StudentJournal) = {
+class StudentStateAction extends RestfulAction[StudentState] {
+  override def editSetting(entity: StudentState) = {
     val departments = findItems(classOf[Department])
     put("departments", departments)
 
@@ -22,7 +24,7 @@ class StudentJournalAction extends RestfulAction[StudentJournal] {
     val adminclasses = findItems(classOf[Adminclass])
     put("adminclasses", adminclasses)
 
-    val statuses = findItems(classOf[StdStatus])
+    val statuses = findItems(classOf[StudentStatus])
     put("statuses", statuses)
 
     super.editSetting(entity)

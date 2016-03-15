@@ -13,10 +13,6 @@
     <td class="content">${stdType.name}</td>
   </tr>
   <tr>
-    <td class="title" width="20%">标签类型</td>
-    <td class="content">${stdType.labelType}</td>
-  </tr>
-  <tr>
     <td class="title" width="20%">英文名</td>
     <td class="content">${stdType.enName!}</td>
   </tr>

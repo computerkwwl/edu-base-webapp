@@ -2,12 +2,11 @@
 [@b.head/]
 [@b.toolbar title="修改学生类别"]bar.addBack();[/@]
 [@b.tabs]
-  [@b.form action="!update?id=${stdType.id}" theme="list"]
+  [#assign sa][#if stdType.id??]!update?id=${stdType.id!}[#else]!save[/#if][/#assign]
+  [@b.form action=sa theme="list"]
     [@b.textfield name="stdType.code" label="代码" value="${stdType.code!}" required="true" maxlength="20"/]
     [@b.textfield name="stdType.name" label="名称" value="${stdType.name!}" required="true" maxlength="20"/]
     [@b.textfield name="stdType.enName" label="英文名" value="${stdType.enName!}" maxlength="100"/]
-    [@b.select name="stdType.labelType.id" label="标签类型" value="${(stdType.labelType.id)!}" required="true" 
-               style="width:200px;" items=labelTypes option="id,name" empty="..."/]
     [@b.startend label="生效失效时间" 
       name="stdType.beginOn,stdType.endOn" required="false,false" 
       start=stdType.beginOn end=stdType.endOn format="date"/]

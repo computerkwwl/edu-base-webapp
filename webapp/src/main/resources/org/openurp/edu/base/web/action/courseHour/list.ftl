@@ -8,15 +8,11 @@
   [/@]
   [@b.row]
     [@b.boxcol /]
-    [@b.col width="15%" property="id" title="id"]${courseHour.id}[/@]
-
-    [@b.col width="20%" property="passed" title="是否通过"]${(courseHour.passed?string("是","否"))!}[/@]
-
-    [@b.col width="15%" property="gradeType" title="成绩类型"]${courseHour.gradeType.name!}[/@]
-    [@b.col width="15%" property="markStyle" title="成绩记录方式"]${courseHour.markStyle.name!}[/@]
-    [@b.col width="15%" property="examStatus" title="考试情况"]${(courseHour.examStatus.name)!}[/@]
-
-    [@b.col width="15%" property="score" title="得分"]${courseHour.score!}[/@]
+    [@b.col width="15%" property="course" title="对应课程"]${(courseHour.course.name)!}[/@]
+    [@b.col width="15%" property="period" title="学时"]${courseHour.period!}[/@]
+    [@b.col width="15%" property="weekHour" title="周课时"]${courseHour.weekHour!}[/@]
+    [@b.col width="15%" property="weeks" title="周数"]${courseHour.weeks!}[/@]
+    [@b.col width="15%" property="hourType" title="课时类别代码"]${(courseHour.hourType.name)!}[/@]
   [/@]
   [/@]
 [@b.foot/]

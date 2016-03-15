@@ -6,31 +6,31 @@
 <table class="infoTable">
   <tr>
     <td class="title" width="20%">代码</td>
-    <td class="content">${studentJournal.code}</td>
+    <td class="content">${studentState.code}</td>
   </tr>
   <tr>
     <td class="title" width="20%">名称</td>
-    <td class="content">${studentJournal.name}</td>
+    <td class="content">${studentState.name}</td>
   </tr>
   <tr>
     <td class="title" width="20%">英文名</td>
-    <td class="content">${studentJournal.enName!}</td>
+    <td class="content">${studentState.enName!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">生效时间</td>
-    <td class="content" >${studentJournal.beginOn!}</td>
+    <td class="content" >${studentState.beginOn!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">失效时间</td>
-    <td class="content" >${studentJournal.endOn!}</td>
+    <td class="content" >${studentState.endOn!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">备注</td>
-    <td class="content">${studentJournal.remark!}</td>
+    <td class="content">${studentState.remark!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">专业</td>
-    <td class="content">${studentJournal.major.name!}</td>
+    <td class="content">${studentState.major.name!}</td>
   </tr>
 </table>
 

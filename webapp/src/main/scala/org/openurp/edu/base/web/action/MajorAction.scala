@@ -6,6 +6,8 @@ import org.openurp.edu.base.model.Major
 import org.openurp.edu.base.model.Project
 import org.beangle.data.dao.OqlBuilder
 import org.openurp.code.edu.model.DisciplineCategory
+import org.openurp.edu.base.model.Direction
+import org.openurp.edu.base.model.MajorDiscipline
 
 class MajorAction extends RestfulAction[Major] {
   override def editSetting(entity: Major) = {
@@ -13,24 +15,18 @@ class MajorAction extends RestfulAction[Major] {
     val projects = findItems(classOf[Project])
     put("projects", projects)
 
-    val categories = findItems(classOf[DisciplineCategory])
-    put("categories", categories)
+    val disciplines = findItems(classOf[MajorDiscipline])
+    put("disciplines", disciplines)
 
-    //    val journals = findItems(classOf[MajorJournal])
-    //    put("journals", journals)
-    //
-    //    val educations = findItems(classOf[Education])
-    //    put("educations", educations)
-    //
-    //    val directions = findItems(classOf[Direction])
-    //    put("directions", directions)
+    val directions = findItems(classOf[Direction])
+    put("directions", directions)
 
     super.editSetting(entity)
   }
 
   private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
     val query = OqlBuilder.from(clazz)
-    query.orderBy("name")
+    //    query.orderBy("name")
     val items = entityDao.search(query)
     items
   }

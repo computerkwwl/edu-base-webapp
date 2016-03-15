@@ -1,13 +1,13 @@
 [#ftl]
 [@b.head/]
-[@b.toolbar title="学位"/]
+[@b.toolbar title="课程能力等级"/]
 <table class="indexpanel">
   <tr>
     <td class="index_view">
     [@b.form name="courseAbilityRateSearchForm" action="!search" target="courseAbilityRatelist" title="ui.searchForm" theme="search"]
       [@b.textfields names="courseAbilityRate.code;代码"/]
       [@b.textfields names="courseAbilityRate.name;名称"/]
-      <input type="hidden" name="orderBy" value="courseAbilityRate.name"/>
+      <input type="hidden" name="orderBy" value="courseAbilityRate.code"/>
     [/@]
     </td>
     <td class="index_content">[@b.div id="courseAbilityRatelist" href="!search?orderBy=courseAbilityRate.code"/]

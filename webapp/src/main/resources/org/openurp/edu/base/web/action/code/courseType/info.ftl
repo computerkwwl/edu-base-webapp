@@ -1,6 +1,6 @@
 [#ftl]
 [@b.head/]
-[@b.toolbar title="学位信息"]
+[@b.toolbar title="课程类别信息"]
   bar.addBack("${b.text("action.back")}");
 [/@]
 <table class="infoTable">

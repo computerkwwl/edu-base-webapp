@@ -8,7 +8,7 @@
       [@b.textfields names="course.code;代码"/]
       [@b.textfields names="course.name;名称"/]
       [@b.textfields names="course.department.name;院系"/]
-      <input type="hidden" name="orderBy" value="course.name"/>
+      <input type="hidden" name="orderBy" value="course.code"/>
     [/@]
     </td>
     <td class="index_content">[@b.div id="courselist" href="!search?orderBy=course.code"/]

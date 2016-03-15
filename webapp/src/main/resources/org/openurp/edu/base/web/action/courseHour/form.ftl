@@ -1,24 +1,16 @@
 [#ftl]
 [@b.head/]
-[@b.toolbar title="修改学位"]bar.addBack();[/@]
+[@b.toolbar title="修改课程分类课时信息"]bar.addBack();[/@]
 [@b.tabs]
-  [@b.form action="!update?id=${courseHour.id}" theme="list"]
-    [@b.radios label="是否通过"  name="courseHour.passed" value=courseHour.passed items="1:common.yes,0:common.no"/]
-    [@b.radios label="是否提交"  name="courseHour.beyondSubmit" value=courseHour.beyondSubmit items="1:common.yes,0:common.no"/]
-    [@b.select name="courseHour.gradeType.id" label="成绩类型" value="${(courseHour.gradeType.id)!}" required="true" 
-               style="width:200px;" items=gradeTypes option="id,name" empty="..."/]
-    [@b.select name="courseHour.markStyle.id" label="成绩记录方式" value="${(courseHour.markStyle.id)!}" required="true" 
-               style="width:200px;" items=markStyles option="id,name" empty="..."/]
-    [@b.select name="courseHour.examStatus.id" label="考试情况" value="${(courseHour.examStatus.id)!}" required="true" 
-               style="width:200px;" items=examStatuses option="id,name" empty="..."/]
-    [@b.select name="courseHour.courseHour.id" label="对应的课程成绩" value="${(courseHour.courseHour.id)!}" required="true" 
-               style="width:200px;" items=courseHours option="id,name" empty="..."/]
-
-    [@b.textfield name="courseHour.score" label="得分" value="${courseHour.score!}" maxlength="30"/]
-    [@b.textfield name="courseHour.scoreText" label="得分字面值" value="${courseHour.scoreText!}" /]
-    [@b.textfield name="courseHour.status" label="成绩状态" value="${courseHour.status!}" /]
-    [@b.textfield name="courseHour.operator" label="操作者" value="${courseHour.operator!}"/]
-    [@b.textfield name="courseHour.percent" label="百分比描述" value="${courseHour.percent!}"/]
+  [#assign sa][#if courseHour.id??]!update?id=${courseHour.id!}[#else]!save[/#if][/#assign]
+  [@b.form action=sa theme="list"]
+    [@b.select name="courseHour.course.id" label="对应课程" value="${(courseHour.course.id)!}" required="true" 
+               style="width:200px;" items=courses option="id,name" empty="..."/]
+    [@b.textfield name="courseHour.period" label="学时" value="${courseHour.period!}" maxlength="30"/]
+    [@b.textfield name="courseHour.weekHour" label="周课时" value="${courseHour.weekHour!}" maxlength="30"/]
+    [@b.textfield name="courseHour.weeks" label="周数" value="${courseHour.weeks!}" maxlength="30"/]               
+    [@b.select name="courseHour.hourType.id" label="课时类别代码" value="${(courseHour.hourType.id)!}" required="true" 
+               style="width:200px;" items=hourTypes option="id,name" empty="..."/]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
     [/@]

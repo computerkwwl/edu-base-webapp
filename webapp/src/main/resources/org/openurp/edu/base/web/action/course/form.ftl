@@ -2,12 +2,14 @@
 [@b.head/]
 [@b.toolbar title="修改课程"]bar.addBack();[/@]
 [@b.tabs]
-  [@b.form action="!update?id=${course.id}" theme="list"]
+  [#assign sa][#if course.id??]!update?id=${course.id!}[#else]!save[/#if][/#assign]
+  [@b.form action=sa theme="list"]
     [@b.textfield name="course.code" label="代码" value="${course.code!}" required="true" maxlength="20"/]
     [@b.textfield name="course.name" label="名称" value="${course.name!}" required="true" maxlength="20"/]
     [@b.textfield name="course.enName" label="英文名" value="${course.enName!}" maxlength="100"/]
-    [@b.select name="course.education.id" label="学历层次" value="${(course.education.id)!}" required="true" 
-               style="width:200px;" items=educations option="id,name" empty="..."/]
+    [@b.select2 label="学历层次" name1st="educationId1st" name2nd="educationId2nd" 
+      items1st=educations items2nd= course.educations
+      option="id,name"/]
     [@b.select name="course.category.id" label="课程种类代码" value="${(course.category.id)!}" required="true" 
                style="width:200px;" items=categories option="id,name" empty="..."/]
     [@b.textfield name="course.credits" label="学分" value="${course.credits!}" required="true" maxlength="20"/]
@@ -23,17 +25,13 @@
                style="width:200px;" items=examModes option="id,name" empty="..."/]
     [@b.select name="course.markStyle.id" label="成绩记录方式" value="${(course.markStyle.id)!}" required="true" 
                style="width:200px;" items=markStyles option="id,name" empty="..."/]
-    [@b.radios label="课程使用状态"  name="course.enabled" value=course.enabled items="1:common.yes,0:common.no" required="true"/]
-    [@b.radios label="是否计算绩点"  name="course.calGp" value=course.calGp items="1:common.yes,0:common.no" required="true"/]
+    [@b.radios label="是否计算绩点"  name="course.calgp" value=course.calGp items="1:common.yes,0:common.no" required="true"/]
     [@b.textfield name="course.remark" label="课程备注" value="${course.remark!}"  maxlength="100"/]
     [@b.select2 label="针对专业" name1st="majorsId1st" name2nd="majorsId2nd" 
       items1st=majors items2nd= course.majors
       option="id,name"/]
     [@b.select2 label="排除专业" name1st="xmajorsId1st" name2nd="xmajorsId2nd" 
       items1st=xmajors items2nd= course.xmajors 
-      option="id,name"/]
-    [@b.select2 label="先修课程" name1st="prerequisitesId1st" name2nd="prerequisitesId2nd" 
-      items1st=prerequisites items2nd= course.prerequisites 
       option="id,name"/]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]

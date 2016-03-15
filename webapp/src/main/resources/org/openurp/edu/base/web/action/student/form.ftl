@@ -3,24 +3,20 @@
 [@b.toolbar title="修改学籍信息"]bar.addBack();[/@]
 [@b.tabs]
   [@b.tab label="基本信息"]
-  [@b.form action="!update?id=${student.id}" theme="list"]
+  [#assign sa][#if student.id??]!update?id=${student.id!}[#else]!save[/#if][/#assign]
+  [@b.form action=sa theme="list"]
     [@b.field label="学号"]${student.code!}[/@]
     [@b.field label="姓名"]${(student.person.name)!}[/@]
-   [#--
-    [@b.field label="英文名"]${(student.person.enName)!}[/@]
-    [@b.field label="性别"]${(student.person.gender.name)!}[/@] 
-    --] 
-    [@b.textfield name="student.grade" label="年级" value="${student.grade!}" required="true" /]    
+    [@b.select name="student.stdType.id" label="学生类别" value="${(student.stdType.id)!}" required="true" 
+               style="width:200px;" items=type1s option="id,name" empty="..."/]
+    [@b.select name="student.state.major.id" label="学籍状态" value="${(student.state.id)!}" required="true" 
+               style="width:200px;" items=states option="id,name" empty="..."/]      
     [@b.select name="student.department.id" label="行政管理院系" value="${(student.department.id)!}"  
                style="width:200px;" items=departments option="id,name" empty="..."/]    
-    [@b.select name="student.major.id" label="专业" value="${(student.major.id)!}" required="true" 
+    [@b.select name="student.state.major.id" label="专业" value="${(student.state.major.id)!}" required="true" 
                style="width:200px;" items=majors option="id,name" empty="..."/]    
     [@b.select name="student.direction.id" label="专业方向" value="${(student.direction.id)!}" 
                style="width:200px;" items=directions option="id,name" empty="..."/]    
-    [@b.select name="student.majorDepart.id" label="专业所在院系" value="${(student.majorDepart.id)!}" required="true" 
-               style="width:200px;" items=majorDeparts option="id,name" empty="..."/]
-    [@b.select name="student.stdType.id" label="学生类别" value="${(student.stdType.id)!}" required="true" 
-               style="width:200px;" items=type1s option="id,name" empty="..."/]
     [@b.select name="student.campus.id" label="校区" value="${(student.campus.id)!}" required="true" 
                style="width:200px;" items=campuse option="id,name" empty="..."/]
     [@b.textfield name="student.duration" label="学制" value="${student.duration!}" required="true" /]
@@ -44,7 +40,7 @@
 [/@]
   [#if student.id??]
   [@b.tab label="建设过程"]
-  [@b.div href="student-journal!search?studentJournal.student.id=${student.id}"/]
+  [@b.div href="student-state!search?studentState.student.id=${student.id}"/]
     [/@]
   [/#if]
 [/@]

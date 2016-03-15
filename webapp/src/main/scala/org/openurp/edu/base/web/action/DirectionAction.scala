@@ -7,6 +7,10 @@ import org.openurp.edu.base.model.Direction
 import org.beangle.data.dao.OqlBuilder
 
 class DirectionAction extends RestfulAction[Direction] {
+
+  override def indexSetting() = {
+    put("majors", findItems(classOf[Major]))
+  }
   override def editSetting(entity: Direction) = {
 
     val majors = findItems(classOf[Major])

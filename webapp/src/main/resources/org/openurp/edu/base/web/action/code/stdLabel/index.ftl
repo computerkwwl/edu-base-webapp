@@ -8,7 +8,7 @@
       [@b.textfields names="stdLabel.code;代码"/]
       [@b.textfields names="stdLabel.name;名称"/]
       [@b.textfields names="stdLabel.labelType;标签类型"/]
-      <input type="hidden" name="orderBy" value="stdLabel.name"/>
+      <input type="hidden" name="orderBy" value="stdLabel.code"/>
     [/@]
     </td>
     <td class="index_content">[@b.div id="stdLabellist" href="!search?orderBy=stdLabel.code"/]
