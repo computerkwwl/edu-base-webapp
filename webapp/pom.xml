@@ -53,6 +53,11 @@
       <version>${beangle.webui.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.beangle.data</groupId>
+      <artifactId>beangle-data-transfer_2.11</artifactId>
+      <version>${beangle.data.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.beangle.webui</groupId>
       <artifactId>beangle-webui-bootstrap_2.11</artifactId>
       <version>${beangle.webui.version}</version>
@@ -65,6 +70,11 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-ehcache</artifactId>
       <version>${hibernate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.jxls</groupId>
+      <artifactId>jxls-core</artifactId>
+      <version>${jxls.version}</version>
     </dependency>
   </dependencies>
 </project>

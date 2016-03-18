@@ -4,7 +4,7 @@
 <table class="indexpanel">
   <tr>
     <td class="index_view">
-    [@b.form name="adminclassSearchForm" action="!search" target="adminclasslist" title="ui.searchForm" theme="search"]
+    [@b.form name="searchForm" action="!search" target="adminclasslist" title="ui.searchForm" theme="search"]
       [@b.textfields names="adminclass.grade;年级"/]
       [@b.textfields names="adminclass.name;名称"/]
       <input type="hidden" name="orderBy" value="adminclass.code desc"/>
