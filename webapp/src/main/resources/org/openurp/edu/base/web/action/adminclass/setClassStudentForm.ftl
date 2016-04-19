@@ -102,10 +102,10 @@
 						${(student.code)!}
 					[/@]
 					[@b.col property="name" title="姓名" width="20%"]
-		     	  		${(student.name)!}
+		     	  		${(student.person.name.formatedName)!}
 		     	    [/@]
 					[@b.col property="department.name" title="院系" width="25%" ]
-						${(student.department.name)!}
+						${(student.state.department.name)!}
 					[/@]
 					[@b.col property="stdType.name" title="学生类别" width="15%" ]
 						${(student.stdType.name)!}

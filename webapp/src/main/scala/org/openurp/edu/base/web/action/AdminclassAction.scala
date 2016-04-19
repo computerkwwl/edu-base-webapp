@@ -148,9 +148,9 @@ class AdminclassAction extends RestfulAction[Adminclass] with ImportDataSupport[
       studentStates.foreach { studentState =>
         val adminclass = studentState.adminclass
         studentState.adminclass = null
-        entityDao.saveOrUpdate(studentState)
+        //        entityDao.saveOrUpdate(studentState)
         entityDao.refresh(adminclass)
-        entityDao.saveOrUpdate(adminclass)
+        //        entityDao.saveOrUpdate(adminclass)
       }
     }
     // 保存现在班级学生列表中可以看的到的所有学生
@@ -199,19 +199,19 @@ class AdminclassAction extends RestfulAction[Adminclass] with ImportDataSupport[
    * @return
    */
   def addClassStudentList(): String = {
-    val builder = OqlBuilder.from(classOf[StudentState], "ss");
-    val studentState = populate(classOf[StudentState], "studentState");
+    val builder = OqlBuilder.from(classOf[StudentState], "ss")
+    val studentState = populate(classOf[StudentState], "studentState")
     val adminclassId = longId("adminclass")
+    val adminclass = entityDao.get(classOf[Adminclass], adminclassId)
     // 第一次进入查询学生页面
-    if (getBoolean("first") != null && getBoolean("first", false)) {
-      val adminclass = entityDao.get(classOf[Adminclass], adminclassId)
+    if (getBoolean("first") != null && getBoolean("first", true)) {
       //      studentState.grade = adminclass.grade
       //      studentState.department = adminclass.department
       //      studentState.major = adminclass.major
       //      studentState.adminclass = adminclass
       builder.where("ss.grade = :grade", adminclass.grade)
       builder.where("ss.department.name = :department", adminclass.department.name)
-      builder.where("ss.major.name = :major", adminclass.major.name)
+      //      builder.where("ss.major.name = :major", adminclass.major.name)
     } else {
       // 根据输入的条件
       if (studentState.std.code != null)
@@ -230,11 +230,12 @@ class AdminclassAction extends RestfulAction[Adminclass] with ImportDataSupport[
     // 不是本班级的学生
     builder.where("ss.adminclass is null or ss.adminclass.id <> :adminClass", longId("adminclass"))
     builder.where("ss.department in (:departments)", getDeparts())
-    builder.where("ss.education in (:educations)", getEducations())
-    builder.orderBy("std.std.code desc")
+    //    builder.where("ss.education in (:educations)", getEducations())
+    builder.orderBy("ss.std.code desc")
     builder.limit(getPageLimit)
     val studentStates = entityDao.search(builder)
     put("studentStates", studentStates)
+    put("adminclass", adminclass)
     put("adminclassId", adminclassId)
     put("student", studentStates.head.std)
     put("stdCodes", get("stdCodes")) // 已经输入的学生
@@ -252,5 +253,49 @@ class AdminclassAction extends RestfulAction[Adminclass] with ImportDataSupport[
     builder.orderBy("code")
     entityDao.search(builder)
   }
+
+  /**
+   * 根据学号或名称查询学生
+   *
+   * @return
+   */
+  def addClassStudent(): String = {
+    var codes = get("stdCodes").orNull
+    if (Strings.isNotEmpty(codes)) {
+      codes = codes.replaceAll("[\\s，；]", ",").replaceAll(",,", ",")
+      val projectId = getInt("student.project.id").get
+      val studentList = Collections.newBuffer[Student]
+      val notAddCodes = Collections.newBuffer[String]
+
+      val codeArr = Strings.split(codes)
+      val codeIterater = codeArr.iterator
+      while (codeIterater.hasNext) {
+        val students = entityDao.findBy(classOf[Student], "code", List(codeIterater.next()))
+        var b = false // 是否存在可以使用的学号
+        if (!students.isEmpty) {
+          val std = students.head
+          if (std.project.id.equals(projectId) && !studentList.contains(std)) {
+            studentList += std
+            b = true
+          }
+        } else {
+          val students1 = entityDao.search(OqlBuilder.from(classOf[Student], "c").where("c.person.name.formatedName like :name", "%" + codeIterater.next().trim() + "%"))
+          students1.foreach { std =>
+            if (std.project.id.equals(projectId) && !studentList.contains(std)) {
+              studentList += std
+              b = true
+            }
+          }
+        }
+        if (!b) {
+          notAddCodes += codeIterater.next()
+        }
+      }
+      put("studentList", studentList)
+      put("notAddCodes", notAddCodes)
+    }
+    return forward()
+  }
+
 }
 

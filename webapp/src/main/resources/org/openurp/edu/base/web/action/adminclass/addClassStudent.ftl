@@ -19,8 +19,8 @@
 						.append(model.replace("#class_list",class_list)
 							.replace("#id","${student.id}")
 							.replace("#code","${(student.code)!}")
-							.replace("#name","${(student.name)!}")
-							.replace("#department","${(student.department.name)!}")
+							.replace("#name","${(student.person.name.formatedName)!}")
+							.replace("#department","${(student.state.department.name)!}")
 							.replace("#stdType","${(student.stdType.name)!}")
 							.replace("#registed","${((student.registed)?string("有效","<font color='red'>无效</font>"))!}"));
 				}
