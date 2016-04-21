@@ -1,84 +1,135 @@
-[@b.head/]
+[#ftl]
+[@b.head]
+<link href="${base}/static/css/home.css?v2" rel="stylesheet" type="text/css" />
+<script src="${base}/static/scripts/menu.js" type="text/javascript"></script>
 <style>
-body { padding-top: 50px; }
-.container{
+#_menu_folder {
+  height:100%;
   width:100%;
+  background-color:rgba(0, 0, 0, 0.2);
+  cursor:pointer;
+  position:relative;
 }
-#menu .nav > li > a {
-   padding: 10px 10px;
+#_menu_folder:hover {
+  height:100%;
+  width:100%;
+  background-color:rgba(222, 222, 222, 1);
 }
-#urp_app_nav{
-    float: left;
-    height:50px;
-    width:50px;
-    border-right: 1px solid gray;
+.arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid rgba(0, 0, 0, 0.6);
+    top:50%;
+    position:absolute;
 }
-.nav_logo {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    vertical-align: top;
-}
-.app_logo{
-    height:30px;
+.arrow-left {
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent; 
+        border-right:6px solid rgba(0, 0, 0, 0.6);
+    top:50%;
+    position:absolute;
 }
 </style>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0px;">
+[/@]
+
+<nav style="margin-bottom: 0px;" role="navigation" class="navbar navbar-default">
    <div class="navbar-header">
-       <a id="urp_app_nav" href="#" title="" data-toggle="popover" data-placement="bottom" data-original-title="更多应用..."> <span class="nav_logo glyphicon glyphicon-th"></span></a>
- <a href="/edu/base/index" class="navbar-brand" onclick="return bg.Go(this,null)">教学基础信息管理</a>
+       <img src="${school.logoUrl!}" style="width:50px;height:50px;float: left !important;"/>
+       <a onclick="return bg.Go(this,null)" style="height: 20px;" class="navbar-brand" href="${base}/index.action">${(school.name)!}</a>
    </div>
-   
-   <!--顶部导航-->
-   <div><ul class="nav navbar-nav" id="top_nav_bar" ></ul></div>
-</nav>
-
-
-<div class="container">
-  <div class="row">
-    <div id="menu" class="ajax_container col-md-1" style="padding-left: 0px; padding-right: 0px;">
-      <ul class="nav nav-pills" id="left_nav_bar"></ul>
+   <div>
+     <ul class="nav navbar-nav" style="height: 50px;" id="app_nav_bar"></ul>
+     <ul class="nav navbar-nav navbar-right" style="height: 35px; padding-top: 15px;">
+       <li>
+        <span class="glyphicon glyphicon-user" aria-hidden="true">[@b.a href="/security/my" target="_blank" title="查看登录记录"]${user.name}&nbsp;[/@]</span>
+       </li>
+     <li>
+     [#assign logoutUrl]index!logout?redirect=${casConfig.casServer}/logout[/#assign]
+     <span class="glyphicon glyphicon-log-out" aria-hidden="true">[@b.a href=logoutUrl target="_top"]退出&nbsp;&nbsp;[/@]</span>
+        </li>
+      </ul>
     </div>
+</nav>
+<table id="mainTable" style="width:100%;">
+  <tr>
+     <td style="height:100%;width:10%;padding-right: 0px;" id="leftTD" valign="top">
+       <div id="menu_panel" ><ul class="menu collapsible" id="menu_ul"></ul></div>
+     </td>
+     <td style="height:100%;width:5px">
+      <div id="_menu_folder"><div id="_menu_folder_tri"></div></div>
+     </td>
+     <td id="rightTD" valign="top" style="padding-left: 0px;">
     <div id="main" class="ajax_container col-md-11" style="padding-left: 0px; padding-right: 0px;">选择一个菜单</div>
-  </div>
-</div>
+     </td>
+  </tr>
+</table>
 
-<script>
- var menus = ${menus}
- for(var i=0;i< menus[0].menus.length;i++){
-   var li = "<li"+(i==0?" class='active'":"")+"><a href='#' onclick='return switchMenu("+i+",this.id)' id='"+menus[0].menus[i].id+"'>"+menus[0].menus[i].name+"</a></li>"
-   jQuery("#top_nav_bar").append(li)
- }
- var fm = menus[0].menus[0].children
- for(i=0;i<fm.length;i++){
-   addMenu(fm[i],jQuery("#left_nav_bar"));
- }
- function switchMenu(menuIdex,id){
-    jQuery("#left_nav_bar").html("")
-    fm = menus[0].menus[menuIdex].children
-    for(i=0;i<fm.length;i++){
-      addMenu(fm[i],jQuery("#left_nav_bar"));
+<script type="text/javascript">
+  function editAccount(){
+        window.open("${b.url('/security/my')}");
+  }
+  var menuProfiles = ${menuJson}
+  var apps = ${appJson}
+  var foldTemplate='<li style="margin:0px;" class="{active_class}"><a href="javascript:void(0)" class="first_menu">{menu.title}</a><ul class="acitem" style="display: none;"><div class="scroll_box" id="menu{menu.id}"></div></ul></li>'
+  var menuTempalte='<li><a class="p_1" onclick="return bg.Go(this,\'main\')" href="{menu.entry}">{menu.title}</a></li>';
+  var appTemplate='<li class="{active_class}"><a href="{app.url}" target="_top">{app.title}</a></li>';
+  var webappBase='${webappBase}';
+  function addApps(apps,jqueryElem){
+    var appendHtml='';
+    for(var i=0;i<apps.length;i++){
+      var app = apps[i];
+      [#noparse]
+      appendHtml = appTemplate.replace('{app.url}',app.url.replace('${openurp.webapp}',webappBase));
+      [/#noparse]
+      appendHtml = appendHtml.replace('{app.title}',app.title);
+      appendHtml = appendHtml.replace('{active_class}',app.name=='${thisAppName}'?"active":"");
+      jqueryElem.append(appendHtml);
     }
-    jQuery('#'+id).parent().siblings().each(function(i,li){jQuery(li).removeClass('active')});
-    jQuery('#'+id).parent().addClass('active');
-    return false;
- }
- function addMenu(menu,container){
-   if(menu.entry){
-     container.append("<li><a href='${base}"+menu.entry+"' onclick='return accessMe(this.id)' id='menu"+menu.id+"'>"+menu.name+"</a></li>")
-   }else if(menu.children && menu.children.length > 0){
-     var nestedId="menu"+menu.id
-     container.append("<li><a href='#'>"+menu.name+"</a><ul class='nav nav-pills' id='"+nestedId+"'></ul></li>")
-     for(i=0;i< menu.children.length;i++){
-       addMenu(menu.children[i],jQuery("#"+nestedId));
-     }
-   }
- }
- 
- function accessMe(id){
-   jQuery('#'+id).parent().siblings().each(function(i,li){jQuery(li).removeClass('active')});
-   jQuery('#'+id).parent().addClass('active');
-   return bg.Go(document.getElementById(id),'main');
- }
+  }
+  function addMenus(menus,jqueryElem){
+    var appendHtml='';
+    for(var i=0;i<menus.length;i++){
+      var menu = menus[i];
+      if(menu.children){
+        appendHtml = foldTemplate.replace('{menu.id}',menu.id);
+        appendHtml = appendHtml.replace('{menu.title}',menu.title);
+        appendHtml = appendHtml.replace('{active_class}',(i==0)?"expand":"");
+        jqueryElem.append(appendHtml);
+        addMenus(menu.children,jQuery('#menu'+menu.id));
+      }else{
+        appendHtml = menuTempalte.replace('{menu.id}',menu.id);
+        appendHtml = appendHtml.replace('{menu.title}',menu.title);
+        appendHtml = appendHtml.replace('{menu.entry}',bg.getContextPath()+menu.entry+".action");
+        jqueryElem.append(appendHtml);
+      }
+    }
+  }
+  addApps(apps,jQuery('#app_nav_bar'));
+  addMenus(menuProfiles[0].menus,jQuery('#menu_ul'));
+  
+  jQuery("ul.menu li a.p_1").click(function() {
+    jQuery("ul.menu li.current").removeClass('current');
+    jQuery(this).parent('li').addClass('current');
+  });
+  jQuery(function() {
+    jQuery('#_menu_folder_tri').addClass('arrow-left');
+    jQuery('#_menu_folder').click(function() {
+      jQuery('#leftTD').toggle(200);
+      var jq_tri = jQuery('#_menu_folder_tri');
+      if(jq_tri.hasClass('arrow-left')) {
+        jq_tri.removeClass('arrow-left');
+        jq_tri.addClass('arrow-right');
+      } else {
+        jq_tri.removeClass('arrow-right');
+        jq_tri.addClass('arrow-left');
+      }
+    });
+  });
+  
 </script>
+
 [@b.foot/]
