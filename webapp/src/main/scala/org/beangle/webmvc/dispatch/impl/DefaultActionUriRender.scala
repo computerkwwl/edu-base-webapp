@@ -25,6 +25,7 @@ import org.beangle.webmvc.api.context.ActionContext
 import org.beangle.webmvc.config.RouteMapping
 import org.beangle.webmvc.dispatch.{ ActionUriRender, RequestMapper }
 import org.beangle.webmvc.config.Configurer
+import org.beangle.commons.lang.Strings
 
 /**
  * FIXME

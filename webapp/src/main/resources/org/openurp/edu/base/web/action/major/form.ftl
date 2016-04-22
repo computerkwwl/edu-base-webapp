@@ -19,7 +19,7 @@
  [/@]
   [#if major.persisted]
 	  [@b.tab label="建设过程"]
-	    [@b.div href="../base/{project}/major-journal!search?majorJournal.major.id=${major.id}&project=${Parameters['project']}"/]
+	    [@b.div href="{project}/major-journal!search?majorJournal.major.id=${major.id}&project=${Parameters['project']}"/]
 	  [/@]
     [@b.tab label="专业学科信息"]
       [@b.div href="{project}/major-discipline!search?majorDiscipline.major.id=${major.id}&project=${Parameters['project']}"/]
