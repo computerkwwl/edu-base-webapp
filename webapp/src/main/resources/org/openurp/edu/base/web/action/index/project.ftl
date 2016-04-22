@@ -48,7 +48,7 @@
         <span class="glyphicon glyphicon-user" aria-hidden="true">[@b.a href="/security/my" target="_blank" title="查看登录记录"]${user.name}&nbsp;[/@]</span>
        </li>
      <li>
-     [#assign logoutUrl]index!logout?redirect=${casConfig.casServer}/logout[/#assign]
+     [#assign logoutUrl]!logout?redirect=${casConfig.casServer}/logout[/#assign]
      <span class="glyphicon glyphicon-log-out" aria-hidden="true">[@b.a href=logoutUrl target="_top"]退出&nbsp;&nbsp;[/@]</span>
         </li>
       </ul>
@@ -63,7 +63,7 @@
       <div id="_menu_folder"><div id="_menu_folder_tri"></div></div>
      </td>
      <td id="rightTD" valign="top" style="padding-left: 0px;">
-    <div id="main" class="ajax_container col-md-11" style="padding-left: 0px; padding-right: 0px;">选择一个菜单</div>
+    <div id="main" class="ajax_container" style="padding-left: 0px; padding-right: 0px;">选择一个菜单</div>
      </td>
   </tr>
 </table>
@@ -92,6 +92,7 @@
   }
   function addMenus(menus,jqueryElem){
     var appendHtml='';
+    var entry='';
     for(var i=0;i<menus.length;i++){
       var menu = menus[i];
       if(menu.children){
@@ -103,7 +104,8 @@
       }else{
         appendHtml = menuTempalte.replace('{menu.id}',menu.id);
         appendHtml = appendHtml.replace('{menu.title}',menu.title);
-        appendHtml = appendHtml.replace('{menu.entry}',bg.getContextPath()+menu.entry+".action");
+        entry  = menu.entry.replace("{project}",'${Parameters['project']}')
+        appendHtml = appendHtml.replace('{menu.entry}',bg.getContextPath()+entry);
         jqueryElem.append(appendHtml);
       }
     }

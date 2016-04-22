@@ -16,12 +16,12 @@ class ProjectRestfulAction[T <: Entity[_]] extends RestfulAction[T] {
   }
 
   protected def cuurentProject: Project = {
-    get("projectCode") match {
+    get("project") match {
       case Some(code) =>
         val projects = entityDao.search(OqlBuilder.from(classOf[Project], "p").where("p.code= :code", code).cacheable())
         if (projects.size != 1) throw new RuntimeException("Cannot find unique project according to " + code)
         projects.head
-      case None => throw new RuntimeException("Cannot find projectCode parameter")
+      case None => throw new RuntimeException("Cannot find project parameter")
     }
 
   }

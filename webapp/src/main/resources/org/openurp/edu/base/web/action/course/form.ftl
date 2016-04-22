@@ -2,7 +2,7 @@
 [@b.head/]
 [@b.toolbar title="修改课程"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if course.id?? && course.id>0]!update?id=${course.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if course.persisted]!update?id=${course.id}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="course.code" label="代码" value="${course.code!}" required="true" maxlength="20"/]
     [@b.textfield name="course.name" label="名称" value="${course.name!}" required="true" maxlength="20"/]

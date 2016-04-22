@@ -1,30 +1,9 @@
 package org.openurp.edu.base.web
 
 import org.beangle.commons.inject.bind.AbstractBindModule
-import org.openurp.edu.base.web.action.AdminclassAction
-import org.openurp.edu.base.web.action.CourseAction
-import org.openurp.edu.base.web.action.CourseHourAction
-import org.openurp.edu.base.web.action.DirectionAction
-import org.openurp.edu.base.web.action.DirectionJournalAction
-import org.openurp.edu.base.web.action.MajorAction
-import org.openurp.edu.base.web.action.MajorJournalAction
-import org.openurp.edu.base.web.action.ProjectAction
-import org.openurp.edu.base.web.action.ProjectCodeAction
-import org.openurp.edu.base.web.action.StudentAction
-import org.openurp.edu.base.web.action.TeacherAction
-import org.openurp.edu.base.web.action.code.CourseCategoryAction
-import org.openurp.edu.base.web.action.code.StdLabelTypeAction
-import org.openurp.edu.base.web.action.code.ScoreMarkStyleAction
-import org.openurp.edu.base.web.action.code.StdTypeAction
-import org.openurp.edu.base.web.action.code.CourseAbilityRateAction
-import org.openurp.edu.base.web.action.code.ExamStatusAction
-import org.openurp.edu.base.web.action.code.StdLabelAction
-import org.openurp.edu.base.web.action.code.ExamModeAction
-import org.openurp.edu.base.web.action.code.CourseTypeAction
-import org.openurp.edu.base.web.action.code.CourseHourTypeAction
-import org.openurp.edu.base.web.action.StudentStateAction
+import org.openurp.edu.base.web.action.{ AdminclassAction, CourseAction, CourseHourAction, DirectionAction, DirectionJournalAction, MajorAction, MajorDisciplineAction, MajorJournalAction, ProjectAction, ProjectCodeAction, StudentAction, StudentStateAction, TeacherAction }
+import org.openurp.edu.base.web.action.code.{ CourseAbilityRateAction, CourseCategoryAction, CourseHourTypeAction, CourseTypeAction, ExamModeAction, ExamStatusAction, ScoreMarkStyleAction, StdLabelAction, StdLabelTypeAction, StdTypeAction }
 import org.openurp.edu.base.web.action.IndexAction
-import org.openurp.edu.base.web.action.MajorDisciplineAction
 
 class DefaultModule extends AbstractBindModule {
 

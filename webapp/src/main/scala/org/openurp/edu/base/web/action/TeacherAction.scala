@@ -1,11 +1,13 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.model.Entity
-import org.beangle.webmvc.entity.action.RestfulAction
 import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.model.Teacher
+import org.beangle.data.model.Entity
+import org.beangle.webmvc.api.annotation.action
+import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
+import org.openurp.edu.base.model.Teacher
 
+@action("{project}/teacher")
 class TeacherAction extends RestfulAction[Teacher] {
   override def editSetting(entity: Teacher) = {
     val departments = findItems(classOf[Department])

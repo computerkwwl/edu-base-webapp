@@ -1,14 +1,11 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.model.Entity
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.model.Major
-import org.openurp.edu.base.model.Project
 import org.beangle.data.dao.OqlBuilder
-import org.openurp.code.edu.model.DisciplineCategory
-import org.openurp.edu.base.model.Direction
-import org.openurp.edu.base.model.MajorDiscipline
+import org.beangle.data.model.Entity
+import org.beangle.webmvc.api.annotation.action
+import org.openurp.edu.base.model.{ Direction, Major, MajorDiscipline, Project }
 
+@action("{project}/major")
 class MajorAction extends ProjectRestfulAction[Major] {
   override def editSetting(entity: Major) = {
 

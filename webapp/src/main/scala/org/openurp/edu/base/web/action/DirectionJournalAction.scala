@@ -1,13 +1,14 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.model.Entity
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.model.DirectionJournal
-import org.openurp.edu.base.model.Direction
 import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.code.model.Education
+import org.beangle.data.model.Entity
+import org.beangle.webmvc.api.annotation.action
+import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.Education
+import org.openurp.edu.base.model.{ Direction, DirectionJournal }
 
+@action("{project}/direction-journal")
 class DirectionJournalAction extends RestfulAction[DirectionJournal] {
   override def editSetting(entity: DirectionJournal) = {
 

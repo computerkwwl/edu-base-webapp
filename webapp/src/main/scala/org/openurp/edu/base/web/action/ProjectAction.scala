@@ -1,18 +1,12 @@
 package org.openurp.edu.base.web.action
 
+import org.beangle.data.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.view.View
 import org.beangle.webmvc.entity.action.RestfulAction
+import org.openurp.base.model.{ Calendar, Campus, Department, School, TimeSetting }
+import org.openurp.edu.base.code.model.{ Education, StdLabel, StdType }
 import org.openurp.edu.base.model.Project
-import org.openurp.base.model.TimeSetting
-import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.base.model.Campus
-import org.openurp.base.model.School
-import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.code.model.StdLabel
-import org.openurp.edu.base.code.model.Education
-import org.openurp.base.model.Calendar
 
 class ProjectAction extends RestfulAction[Project] {
   override def editSetting(entity: Project) = {

@@ -17,6 +17,9 @@ import org.openurp.base.model.School
 import org.openurp.platform.api.security.Securities
 import org.openurp.hr.base.model.Staff
 import org.openurp.base.model.User
+import org.beangle.webmvc.api.annotation.mapping
+import org.beangle.security.mgt.SecurityManager
+import org.openurp.edu.base.model.Project
 
 /**
  * @author xinzhou
@@ -26,8 +29,9 @@ class IndexAction extends ActionSupport {
   var casConfig: CasConfig = _
   var securityManager: SecurityManager = _
 
-  def index(): String = {
-    val menuJson = IOs.readString(new URL("http://platform.urp.sfu.edu.cn/security/func/" + UrpApp.name + "/menus.json").openStream())
+  @mapping("{project}")
+  def project(): String = {
+    val menuJson = IOs.readString(new URL("http://platform.urp.sfu.edu.cn/security/func/" + UrpApp.name + "/menus/user/" + Securities.user + ".json").openStream())
     put("menuJson", menuJson)
 
     val appJson = IOs.readString(new URL("http://platform.urp.sfu.edu.cn/user/apps/" + Securities.user + ".json").openStream())
@@ -39,13 +43,7 @@ class IndexAction extends ActionSupport {
     put("casConfig", casConfig)
     put("webappBase", "http://webapp.urp.sfu.edu.cn")
     put("thisAppName", UrpApp.name)
-
     forward()
-  }
-
-  def logout(): View = {
-    securityManager.logout(SecurityContext.session)
-    redirect(to(casConfig.casServer + "/logout"), null)
   }
 
   def getUser(): User = {
@@ -55,5 +53,19 @@ class IndexAction extends ActionSupport {
     } else {
       users.head
     }
+  }
+
+  def index(): View = {
+    val now = new java.sql.Date(System.currentTimeMillis())
+    val builder = OqlBuilder.from(classOf[Project], "p").where("p.beginOn <= :now and( p.endOn is null or p.endOn >= :now)", now).orderBy("p.code").cacheable()
+    val projects = entityDao.search(builder)
+    if (projects.isEmpty) throw new RuntimeException("Cannot find any valid projects")
+
+    redirect("project", "&project=" + projects.head.code, null)
+  }
+
+  def logout(): View = {
+    securityManager.logout(SecurityContext.session)
+    redirect(to(casConfig.casServer + "/logout"), null)
   }
 }

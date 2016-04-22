@@ -1,10 +1,9 @@
 package org.openurp.edu.base.web.action
 
+import org.beangle.data.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.model.Project
-import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.model.ProjectCode
+import org.openurp.edu.base.model.{ Project, ProjectCode }
 
 class ProjectCodeAction extends RestfulAction[ProjectCode] {
   override def editSetting(entity: ProjectCode) = {

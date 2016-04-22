@@ -1,18 +1,14 @@
 package org.openurp.edu.base.web.action
 
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.code.model.CourseCategory
-import org.openurp.edu.base.model.Major
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.code.model.ExamMode
-import org.openurp.edu.base.model.Course
 import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.code.model.Education
 import org.beangle.data.model.Entity
+import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.api.view.View
+import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.{ CourseCategory, CourseType, Education, ExamMode, ScoreMarkStyle }
+import org.openurp.edu.base.model.{ Course, Major }
 
+@action("{project}/course")
 class CourseAction extends ProjectRestfulAction[Course] {
 
   protected override def indexSetting(): Unit = {

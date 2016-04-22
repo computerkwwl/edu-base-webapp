@@ -1,30 +1,21 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.model.Entity
-import org.beangle.webmvc.api.view.View
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.beangle.webmvc.api.annotation.mapping
 import scala.collection.mutable.Buffer
+
 import org.beangle.commons.collection.Order
 import org.beangle.commons.lang.Strings
-import org.beangle.webmvc.api.context.Params
-import org.beangle.data.model.meta.EntityType
-import java.{ util => ju, io => jo }
-import org.openurp.edu.base.model.Adminclass
-import org.openurp.edu.base.model.Major
-import org.openurp.edu.base.model.Teacher
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.model.Direction
-import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.base.model.Campus
-import org.openurp.code.person.model.Nation
 import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.code.model.StdLabel
-import org.openurp.code.person.model.Gender
+import org.beangle.data.model.Entity
+import org.beangle.webmvc.api.annotation.{ action, mapping }
+import org.beangle.webmvc.api.view.View
+import org.beangle.webmvc.entity.action.RestfulAction
+import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.StudyType
-import org.openurp.edu.base.model.StudentState
+import org.openurp.code.person.model.{ Gender, Nation }
+import org.openurp.edu.base.code.model.{ StdLabel, StdType }
+import org.openurp.edu.base.model.{ Adminclass, Direction, Major, Student, StudentState, Teacher }
 
+@action("{project}/student")
 class StudentAction extends RestfulAction[Student] {
 
   override protected def indexSetting(): Unit = {

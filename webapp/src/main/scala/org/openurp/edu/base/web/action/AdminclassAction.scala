@@ -1,36 +1,21 @@
 package org.openurp.edu.base.web.action
 
-import java.io.OutputStream
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.ClassLoaders
+import org.beangle.commons.lang.{ ClassLoaders, Strings }
 import org.beangle.data.dao.OqlBuilder
 import org.beangle.data.model.Entity
-import org.beangle.data.transfer.TransferResult
-import org.beangle.webmvc.api.annotation.mapping
-import org.beangle.webmvc.api.annotation.param
+import org.beangle.data.transfer.listener.ForeignerListener
+import org.beangle.webmvc.api.annotation.{ action, mapping, param }
 import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.api.view.Status
-import org.beangle.webmvc.api.view.{ Stream, View }
+import org.beangle.webmvc.api.view.{ Status, Stream, View }
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.edu.base.model.Adminclass
-import org.openurp.edu.base.model.Direction
-import org.openurp.edu.base.model.Instructor
-import org.openurp.edu.base.model.Major
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.model.StudentState
-import org.openurp.edu.base.model.Teacher
-import javax.servlet.http.HttpServletResponse
+import org.openurp.edu.base.code.model.{ Education, StdType }
+import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
 import net.sf.jxls.transformer.XLSTransformer
-import org.openurp.edu.base.web.action.AdminclassAction
-import org.beangle.commons.lang.Strings
-import org.openurp.edu.base.model.Student
 import org.beangle.data.transfer.TransferListener
-import org.beangle.data.transfer.listener.ForeignerListener
-import org.openurp.edu.base.code.model.Education
 
+@action("{project}/adminclass")
 class AdminclassAction extends RestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
   override def editSetting(entity: Adminclass) = {
     val departments = findItems(classOf[Department])

@@ -1,12 +1,13 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.model.CourseHour
 import org.beangle.data.dao.OqlBuilder
 import org.beangle.data.model.Entity
+import org.beangle.webmvc.api.annotation.action
+import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.edu.base.code.model.CourseHourType
-import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.{ Course, CourseHour }
 
+@action("{project}/course-hour")
 class CourseHourAction extends RestfulAction[CourseHour] {
 
   override def indexSetting(): Unit = {

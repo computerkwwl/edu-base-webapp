@@ -1,18 +1,14 @@
 package org.openurp.edu.base.web.action
 
-import java.io.{ File, FileInputStream }
-import org.beangle.commons.lang.Strings
 import org.beangle.data.model.Entity
-import org.beangle.data.transfer.{ TransferListener, TransferResult }
+import org.beangle.data.transfer.{ EntityTransfer, ImporterFactory, TransferResult }
 import org.beangle.data.transfer.io.TransferFormat
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.beangle.webmvc.api.context.ActionContext
-import javax.servlet.http.Part
-import org.beangle.webmvc.entity.helper.PopulateHelper
-import org.beangle.data.transfer.ImporterFactory
-import org.beangle.data.transfer.DefaultEntityTransfer
-import org.beangle.data.transfer.EntityTransfer
 import org.beangle.data.transfer.listener.ForeignerListener
+import org.beangle.webmvc.api.context.ActionContext
+import org.beangle.webmvc.entity.helper.PopulateHelper
+import javax.servlet.http.Part
+import org.beangle.data.transfer.TransferListener
+import org.beangle.webmvc.entity.action.RestfulAction
 
 trait ImportDataSupport[T <: Entity[_]] {
   self: RestfulAction[T] =>
