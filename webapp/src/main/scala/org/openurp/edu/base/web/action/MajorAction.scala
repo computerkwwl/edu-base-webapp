@@ -9,7 +9,7 @@ import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.edu.base.model.Direction
 import org.openurp.edu.base.model.MajorDiscipline
 
-class MajorAction extends RestfulAction[Major] {
+class MajorAction extends ProjectRestfulAction[Major] {
   override def editSetting(entity: Major) = {
 
     val projects = findItems(classOf[Project])
@@ -20,6 +20,10 @@ class MajorAction extends RestfulAction[Major] {
 
     val directions = findItems(classOf[Direction])
     put("directions", directions)
+
+    if (null == entity.project) {
+      entity.project = cuurentProject
+    }
 
     super.editSetting(entity)
   }

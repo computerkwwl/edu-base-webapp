@@ -13,7 +13,16 @@ import org.openurp.edu.base.code.model.Education
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.view.View
 
-class CourseAction extends RestfulAction[Course] {
+class CourseAction extends ProjectRestfulAction[Course] {
+
+  protected override def indexSetting(): Unit = {
+    val courseTypes = findItems(classOf[CourseType])
+    put("courseTypes", courseTypes)
+
+    val departments = findItems(classOf[Department])
+    put("departments", departments)
+  }
+
   override def editSetting(entity: Course) = {
     val courseTypes = findItems(classOf[CourseType])
     put("courseTypes", courseTypes)
@@ -27,21 +36,27 @@ class CourseAction extends RestfulAction[Course] {
     val departments = findItems(classOf[Department])
     put("departments", departments)
 
-    val educations = findItems(classOf[Education])
+    var educations = findItems(classOf[Education]).toBuffer
+    educations --= entity.educations
     put("educations", educations)
 
     val categories = findItems(classOf[CourseCategory])
     put("categories", categories)
 
-    val majors = findItems(classOf[Major])
+    var majors = findItems(classOf[Major]).toBuffer
+    majors --= entity.majors
     put("majors", majors)
 
-    val xmajors = findItems(classOf[Major])
+    var xmajors = findItems(classOf[Major]).toBuffer
+    xmajors --= entity.xmajors
     put("xmajors", xmajors)
 
     val prerequisites = findItems(classOf[Course])
     put("prerequisites", prerequisites)
 
+    if (null == entity.project) {
+      entity.project = cuurentProject
+    }
     super.editSetting(entity)
   }
 
@@ -55,17 +70,16 @@ class CourseAction extends RestfulAction[Course] {
     val course = entity.asInstanceOf[Course]
 
     course.majors.clear()
-    //    val majorIds = getAll("majorsId2nd", classOf[JLong])
-    val majorIds = longIds("majorsId2nd")
+    val majorIds = getAll("majorsId2nd", classOf[Long])
     course.majors ++= entityDao.find(classOf[Major], majorIds)
 
     course.xmajors.clear()
-    val xmajorIds = longIds("xmajorsId2nd")
+    val xmajorIds = getAll("xmajorsId2nd", classOf[Long])
     course.xmajors ++= entityDao.find(classOf[Major], xmajorIds)
 
-    //    course.prerequisites.clear()
-    //    val prerequisityIds = getAll("prerequisitesId2nd", classOf[java.lang.Long])
-    //    course.prerequisites ++= entityDao.find(classOf[Course], prerequisityIds)
+    course.educations.clear()
+    val educationIds = getAll("educationId2nd", classOf[Int])
+    course.educations ++= entityDao.find(classOf[Education], educationIds)
 
     super.saveAndRedirect(entity)
   }

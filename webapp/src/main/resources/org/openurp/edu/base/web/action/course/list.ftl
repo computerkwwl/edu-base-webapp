@@ -13,7 +13,7 @@
     [@b.col width="10%" property="code" title="学时"]${course.period!}[/@]
     [@b.col width="10%" property="code" title="周课时"]${course.weekHour!}[/@]
     [@b.col width="10%" property="credits" title="学分"]${course.credits!}[/@]
-    [@b.col width="15%" property="department" title="院系"]${(course.department.name)!}[/@]
+    [@b.col width="15%" property="department" title="课程所属部门"]${(course.department.name)!}[/@]
     [@b.col width="30%" property="code" title="英文名"]${course.enName!}[/@]
   [/@]
   [/@]

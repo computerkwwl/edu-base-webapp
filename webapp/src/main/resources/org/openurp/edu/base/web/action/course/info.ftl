@@ -53,15 +53,15 @@
   </tr>
   <tr>
     <td class="title" width="20%">建议课程类别</td>
-    <td class="content">${course.courseType!}</td>
+    <td class="content">${(course.courseType.name)!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">考试方式</td>
-    <td class="content">${course.examMode!}</td>
+    <td class="content">${(course.examMode.name)!}</td>
   </tr>
   <tr>
     <td class="title" width="20%">成绩记录方式</td>
-    <td class="content">${course.markStyle!}</td>
+    <td class="content">${(course.markStyle.name)!}</td>
   </tr>
   <tr>
    <td class="title" width="20%">是否计算绩点</td>
@@ -69,7 +69,7 @@
   </tr>
   [#if course.majors ??]
   <tr>
-    <td class="title" width="20%">学历层次</td>
+    <td class="title" width="20%">针对专业</td>
     <td class="content">
       [#list course.majors as major]
         ${major.name}
@@ -80,7 +80,7 @@
   [/#if]
   [#if course.xmajors ??]
   <tr>
-    <td class="title" width="20%">学历层次</td>
+    <td class="title" width="20%">排除专业</td>
     <td class="content">
       [#list course.xmajors as major]
         ${major.name}

@@ -7,7 +7,6 @@
     [@b.form name="majorSearchForm" action="!search" target="majorlist" title="ui.searchForm" theme="search"]
       [@b.textfields names="major.code;代码"/]
       [@b.textfields names="major.name;名称"/]
-      [@b.textfields names="major.project.name;项目名称"/]
       <input type="hidden" name="orderBy" value="major.code"/>
     [/@]
     </td>
