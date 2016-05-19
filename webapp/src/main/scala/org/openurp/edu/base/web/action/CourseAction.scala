@@ -7,6 +7,7 @@ import org.beangle.webmvc.api.view.View
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.{ CourseCategory, CourseType, Education, ExamMode, ScoreMarkStyle }
 import org.openurp.edu.base.model.{ Course, Major }
+import org.beangle.webmvc.entity.action.RestfulAction
 
 @action("{project}/course")
 class CourseAction extends ProjectRestfulAction[Course] {
@@ -29,8 +30,7 @@ class CourseAction extends ProjectRestfulAction[Course] {
     val markStyles = findItems(classOf[ScoreMarkStyle])
     put("markStyles", markStyles)
 
-    val departments = findItemsBySchool(classOf[Department])
-    put("departments", departments)
+    put("departments", findItemsBySchool(classOf[Department]))
 
     var educations = findItems(classOf[Education]).toBuffer
     educations --= entity.educations

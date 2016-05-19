@@ -1,7 +1,5 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.dao.OqlBuilder
-import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
@@ -10,6 +8,7 @@ import org.openurp.people.base.model.Person
 
 @action("{project}/teacher")
 class TeacherAction extends ProjectRestfulAction[Teacher] {
+
   override def editSetting(entity: Teacher) = {
     put("departments", findItemsBySchool(classOf[Department]))
 

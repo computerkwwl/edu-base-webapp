@@ -7,9 +7,10 @@ import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.Education
 import org.openurp.edu.base.model.{ Direction, DirectionJournal }
+import org.beangle.commons.collection.Order
 
 @action("{project}/direction-journal")
-class DirectionJournalAction extends RestfulAction[DirectionJournal] {
+class DirectionJournalAction extends RestfulAction[DirectionJournal] with ProjectSupport {
   override def editSetting(entity: DirectionJournal) = {
 
     val directions = findItems(classOf[Direction])
@@ -18,17 +19,9 @@ class DirectionJournalAction extends RestfulAction[DirectionJournal] {
     val educations = findItems(classOf[Education])
     put("educations", educations)
 
-    val departs = findItems(classOf[Department])
-    put("departs", departs)
+    put("departs", findItemsBySchool(classOf[Department]))
 
     super.editSetting(entity)
-  }
-
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    query.orderBy("name")
-    val items = entityDao.search(query)
-    items
   }
 
 }

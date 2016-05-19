@@ -4,6 +4,7 @@ import org.beangle.data.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.edu.base.model.{ Direction, Major, MajorDiscipline, Project }
+import org.beangle.webmvc.entity.action.RestfulAction
 
 @action("{project}/major")
 class MajorAction extends ProjectRestfulAction[Major] {
@@ -14,9 +15,6 @@ class MajorAction extends ProjectRestfulAction[Major] {
 
     val disciplines = findItems(classOf[MajorDiscipline])
     put("disciplines", disciplines)
-
-    val directions = findItemsByProject(classOf[Direction])
-    put("directions", directions)
 
     if (null == entity.project) {
       entity.project = currentProject

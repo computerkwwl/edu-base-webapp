@@ -8,31 +8,23 @@ import org.openurp.base.model.Department
 import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.edu.base.code.model.Education
 import org.openurp.edu.base.model.{ Major, MajorJournal }
+import org.beangle.commons.collection.Order
 
 @action("{project}/major-journal")
-class MajorJournalAction extends RestfulAction[MajorJournal] {
+class MajorJournalAction extends RestfulAction[MajorJournal] with ProjectSupport {
+
   override def editSetting(entity: MajorJournal) = {
 
-    val majors = findItems(classOf[Major])
-    put("majors", majors)
+    put("majors", findItemsByProject(classOf[Major]))
 
-    val categories = findItems(classOf[DisciplineCategory])
-    put("categories", categories)
+    put("categories", findItems(classOf[DisciplineCategory]))
 
-    val educations = findItems(classOf[Education])
-    put("educations", educations)
+    put("educations", findItems(classOf[Education]))
 
-    val departs = findItems(classOf[Department])
-    put("departs", departs)
+    put("departs", findItemsBySchool(classOf[Department]))
 
     super.editSetting(entity)
   }
 
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    query.orderBy("name")
-    val items = entityDao.search(query)
-    items
-  }
 }
 

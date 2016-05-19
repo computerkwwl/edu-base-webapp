@@ -9,6 +9,7 @@ import org.openurp.base.model.Room
 import org.openurp.base.model.School
 import scala.collection.mutable.Buffer
 import org.beangle.webmvc.api.annotation.action
+
 @action("{project}/classroom")
 class ClassroomAction extends ProjectRestfulAction[Classroom] {
 
