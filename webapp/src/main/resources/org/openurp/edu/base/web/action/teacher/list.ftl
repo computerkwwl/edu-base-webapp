@@ -11,7 +11,7 @@
     [@b.boxcol /]
     [@b.col width="15%" property="user.code" title="代码"]${teacher.user.code}[/@]
     [@b.col width="20%" property="user.name" title="名称"][@b.a href="!info?id=${teacher.id}"]${teacher.user.name}[/@][/@]
-    [@b.col width="15%" property="department.id" title="部门"]${teacher.department.name!}[/@]
+    [@b.col width="15%" property="department.id" title="部门"]${(teacher.department.name)!}[/@]
     [@b.col width="10%" property="beginOn" title="生效时间"]${teacher.beginOn!}[/@]
     [@b.col width="10%" property="endOn" title="失效时间"]${teacher.endOn!}[/@]
   [/@]

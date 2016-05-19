@@ -6,11 +6,11 @@
 <table class="infoTable">
   <tr>
     <td class="title" width="20%">代码</td>
-    <td class="content">${teacher.person.code}</td>
+    <td class="content">${teacher.user.code}</td>
   </tr>
   <tr>
     <td class="title" width="20%">名称</td>
-    <td class="content">${teacher.person.name}</td>
+    <td class="content">${teacher.user.name}</td>
   </tr>
   <tr>
     <td class="title" width="20%">生效时间</td>
