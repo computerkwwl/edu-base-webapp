@@ -5,26 +5,20 @@ import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.edu.base.model.{ Direction, Major }
+import org.beangle.commons.collection.Order
 
 @action("{project}/direction")
-class DirectionAction extends RestfulAction[Direction] {
+class DirectionAction extends ProjectRestfulAction[Direction] {
 
   override def indexSetting() = {
     put("majors", findItems(classOf[Major]))
   }
   override def editSetting(entity: Direction) = {
 
-    val majors = findItems(classOf[Major])
+    val majors = findItemsByProject(classOf[Major])
     put("majors", majors)
 
     super.editSetting(entity)
-  }
-
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    query.orderBy("id")
-    val items = entityDao.search(query)
-    items
   }
 
 }

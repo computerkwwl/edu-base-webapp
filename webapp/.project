@@ -2,7 +2,12 @@
 <projectDescription>
   <name>openurp-edu-base-webapp</name>
   <comment>The Beangle Software provides agile development scaffold and toolkits. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
-  <projects/>
+  <projects>
+    <project>openurp-platform-api-web</project>
+    <project>openurp-platform-api-core</project>
+    <project>openurp-platform-api-datasource</project>
+    <project>openurp-platform-api-cas</project>
+  </projects>
   <buildSpec>
     <buildCommand>
       <name>org.scala-ide.sdt.core.scalabuilder</name>

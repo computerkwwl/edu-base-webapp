@@ -4,7 +4,7 @@
 [@b.tabs]
   [#assign sa][#if teacher.id??]!update?id=${teacher.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
-    [@b.textfield name="teacher.code" label="职工号" value="${teacher.code!}" required="true" maxlength="20"/]
+    [@b.textfield name="teacher.person.code" label="职工号" value="${teacher.person.code!}" required="true" maxlength="20"/]
     [@b.textfield name="teacher.person.name" label="姓名" value="${teacher.person.name!}" required="true" maxlength="20"/]
     [@b.startend label="生效失效日期" 
       name="teacher.beginOn,teacher.endOn" required="false,false" 

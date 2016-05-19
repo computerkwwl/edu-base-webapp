@@ -6,24 +6,21 @@ import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Teacher
+import org.openurp.people.base.model.Person
 
 @action("{project}/teacher")
-class TeacherAction extends RestfulAction[Teacher] {
+class TeacherAction extends ProjectRestfulAction[Teacher] {
   override def editSetting(entity: Teacher) = {
-    val departments = findItems(classOf[Department])
-    put("departments", departments)
+    put("departments", findItemsBySchool(classOf[Department]))
 
-    val persons = findItems(classOf[Teacher])
+    val persons = findItems(classOf[Person])
     put("persons", persons)
 
     super.editSetting(entity)
   }
 
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    //    query.orderBy("name")
-    val items = entityDao.search(query)
-    items
+  override protected def indexSetting(): Unit = {
+    put("departments", findItemsBySchool(classOf[Department]))
   }
 
 }

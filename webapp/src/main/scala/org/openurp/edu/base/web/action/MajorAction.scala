@@ -15,21 +15,14 @@ class MajorAction extends ProjectRestfulAction[Major] {
     val disciplines = findItems(classOf[MajorDiscipline])
     put("disciplines", disciplines)
 
-    val directions = findItems(classOf[Direction])
+    val directions = findItemsByProject(classOf[Direction])
     put("directions", directions)
 
     if (null == entity.project) {
-      entity.project = cuurentProject
+      entity.project = currentProject
     }
 
     super.editSetting(entity)
-  }
-
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    //    query.orderBy("name")
-    val items = entityDao.search(query)
-    items
   }
 
   //  protected override def saveAndRedirect(entity: Major): View = {

@@ -16,34 +16,27 @@ import net.sf.jxls.transformer.XLSTransformer
 import org.beangle.data.transfer.TransferListener
 
 @action("{project}/adminclass")
-class AdminclassAction extends RestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
+class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
   override def editSetting(entity: Adminclass) = {
-    val departments = findItems(classOf[Department])
+    val departments = findItemsBySchool(classOf[Department])
     put("departments", departments)
 
-    val majors = findItems(classOf[Major])
+    val majors = findItemsByProject(classOf[Major])
     put("majors", majors)
 
-    val directions = findItems(classOf[Direction])
+    val directions = findItemsByProject(classOf[Direction])
     put("directions", directions)
 
     val stdTypes = findItems(classOf[StdType])
     put("stdTypes", stdTypes)
 
-    val instructors = findItems(classOf[Instructor])
+    val instructors = findItemsByProject(classOf[Instructor])
     put("instructors", instructors)
 
-    val tutors = findItems(classOf[Teacher])
+    val tutors = findItemsByProject(classOf[Teacher])
     put("tutors", tutors)
 
     super.editSetting(entity)
-  }
-
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    //    query.orderBy("name")
-    val items = entityDao.search(query)
-    items
   }
 
   /**

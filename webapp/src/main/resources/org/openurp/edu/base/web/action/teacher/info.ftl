@@ -6,7 +6,7 @@
 <table class="infoTable">
   <tr>
     <td class="title" width="20%">代码</td>
-    <td class="content">${teacher.code}</td>
+    <td class="content">${teacher.person.code}</td>
   </tr>
   <tr>
     <td class="title" width="20%">名称</td>

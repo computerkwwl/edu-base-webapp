@@ -20,10 +20,13 @@ import org.openurp.base.model.User
 import org.beangle.webmvc.api.annotation.mapping
 import org.beangle.security.mgt.SecurityManager
 import org.openurp.edu.base.model.Project
+import org.beangle.webmvc.api.annotation.action
+import org.openurp.platform.api.security.RemoteService
 
 /**
  * @author xinzhou
  */
+@action("")
 class IndexAction extends ActionSupport {
   var entityDao: EntityDao = _
   var casConfig: CasConfig = _
@@ -31,17 +34,12 @@ class IndexAction extends ActionSupport {
 
   @mapping("{project}")
   def project(): String = {
-    val menuJson = IOs.readString(new URL("http://platform.urp.sfu.edu.cn/security/func/" + UrpApp.name + "/menus/user/" + Securities.user + ".json").openStream())
-    put("menuJson", menuJson)
-
-    val appJson = IOs.readString(new URL("http://platform.urp.sfu.edu.cn/user/apps/" + Securities.user + ".json").openStream())
-    put("appJson", appJson)
-
+    put("menuJson", RemoteService.getMenusJson())
+    put("appJson", RemoteService.getAppsJson())
     entityDao.getAll(classOf[School]) foreach { school => put("school", school) }
-
     put("user", getUser())
     put("casConfig", casConfig)
-    put("webappBase", "http://webapp.urp.sfu.edu.cn")
+    put("webappBase", Urp.webappBase)
     put("thisAppName", UrpApp.name)
     forward()
   }

@@ -15,7 +15,7 @@ class CourseAction extends ProjectRestfulAction[Course] {
     val courseTypes = findItems(classOf[CourseType])
     put("courseTypes", courseTypes)
 
-    val departments = findItems(classOf[Department])
+    val departments = findItemsBySchool(classOf[Department])
     put("departments", departments)
   }
 
@@ -29,7 +29,7 @@ class CourseAction extends ProjectRestfulAction[Course] {
     val markStyles = findItems(classOf[ScoreMarkStyle])
     put("markStyles", markStyles)
 
-    val departments = findItems(classOf[Department])
+    val departments = findItemsBySchool(classOf[Department])
     put("departments", departments)
 
     var educations = findItems(classOf[Education]).toBuffer
@@ -39,29 +39,20 @@ class CourseAction extends ProjectRestfulAction[Course] {
     val categories = findItems(classOf[CourseCategory])
     put("categories", categories)
 
-    var majors = findItems(classOf[Major]).toBuffer
+    var majors = findItemsByProject(classOf[Major]).toBuffer
     majors --= entity.majors
     put("majors", majors)
 
-    var xmajors = findItems(classOf[Major]).toBuffer
+    var xmajors = findItemsByProject(classOf[Major]).toBuffer
     xmajors --= entity.xmajors
     put("xmajors", xmajors)
 
-    val prerequisites = findItems(classOf[Course])
-    put("prerequisites", prerequisites)
-
     if (null == entity.project) {
-      entity.project = cuurentProject
+      entity.project = currentProject
     }
     super.editSetting(entity)
   }
 
-  private def findItems[T <: Entity[_]](clazz: Class[T]): Seq[T] = {
-    val query = OqlBuilder.from(clazz)
-    query.orderBy("name")
-    val items = entityDao.search(query)
-    items
-  }
   protected override def saveAndRedirect(entity: Course): View = {
     val course = entity.asInstanceOf[Course]
 
