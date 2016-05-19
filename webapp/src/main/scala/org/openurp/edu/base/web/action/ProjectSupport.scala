@@ -34,11 +34,13 @@ trait ProjectSupport { this: RestfulAction[_] =>
   def findItemsBySchool[T <: Entity[_]](clazz: Class[T]): Buffer[T] = {
     val query = OqlBuilder.from(clazz, "aa")
     query.where("aa.school=:school", currentProject.school)
+    query.orderBy("code")
     entityDao.search(query).toBuffer
   }
   def findItemsByProject[T <: Entity[_]](clazz: Class[T]): Buffer[T] = {
     val query = OqlBuilder.from(clazz, "aa")
     query.where("aa.project=:project", currentProject)
+    query.orderBy("code")
     entityDao.search(query).toBuffer
   }
 

@@ -8,10 +8,10 @@
       [@b.textfields names="teacher.person.code;代码"/]
       [@b.textfields names="teacher.person.name;名称"/]
       [@b.select name="teacher.department.id" label="部门" items=departments empty="..." style="width:100px"/]
-      <input type="hidden" name="orderBy" value="teacher.person.code"/>
+      <input type="hidden" name="orderBy" value="teacher.user.code"/>
     [/@]
     </td>
-    <td class="index_content">[@b.div id="teacherlist" href="!search?orderBy=teacher.person.code"/]
+    <td class="index_content">[@b.div id="teacherlist" href="!search?orderBy=teacher.user.code"/]
     </td>
   </tr>
 </table>
