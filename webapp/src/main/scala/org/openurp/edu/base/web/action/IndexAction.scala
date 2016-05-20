@@ -33,10 +33,13 @@ class IndexAction extends ActionSupport {
   var securityManager: SecurityManager = _
 
   @mapping("{project}")
-  def project(): String = {
+  def project(@param("project") project: String): String = {
     put("menuJson", RemoteService.getMenusJson())
     put("appJson", RemoteService.getAppsJson())
-    entityDao.getAll(classOf[School]) foreach { school => put("school", school) }
+    val projects = entityDao.findBy(classOf[Project], "code", List(project))
+    put("currentProject", projects.head)
+    put("school", projects.head.school)
+    put("projects", entityDao.getAll(classOf[Project]))
     put("user", getUser())
     put("casConfig", casConfig)
     put("webappBase", Urp.webappBase)
