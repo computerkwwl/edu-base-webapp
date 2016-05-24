@@ -7,6 +7,8 @@
     [@b.form name="searchForm" action="!search" target="adminclasslist" title="ui.searchForm" theme="search"]
       [@b.textfields names="adminclass.grade;年级"/]
       [@b.textfields names="adminclass.name;名称"/]
+      [@b.select style="width:100px" name="adminclass.department.id" label="所属部门" items=departments option="id,name" empty="..." /]
+      [@b.select style="width:100px" name="adminclass.education.id" label="学历层次" items=educations option="id,name" empty="..." /]
       <input type="hidden" name="orderBy" value="adminclass.code desc"/>
     [/@]
     </td>
