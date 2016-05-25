@@ -45,11 +45,11 @@
      <ul class="nav navbar-nav" style="height: 50px;" id="app_nav_bar"></ul>
      <ul class="nav navbar-nav navbar-right" style="height: 35px; padding-top: 15px;">
        <li>
-        <span class="glyphicon glyphicon-user" aria-hidden="true">[@b.a href="/security/my" target="_blank" title="查看登录记录"]${user.name}&nbsp;[/@]</span>
         [#if projects?? && projects?size > 1]
             [@b.select id="homeProjectId" name="contextProject" items=projects title="项目"  option = "code,name" onchange = "changeProject(this.value)"
              style="width:150px;margin-right:5px;" value=currentProject.code/]
         [/#if]
+        <span class="glyphicon glyphicon-user" aria-hidden="true">[@b.a href="/security/my" target="_blank" title="查看登录记录"]${user.name}&nbsp;[/@]</span>
        </li>
      <li>
      [#assign logoutUrl]!logout?redirect=${casConfig.casServer}/logout[/#assign]

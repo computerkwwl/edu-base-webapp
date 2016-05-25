@@ -31,7 +31,7 @@
     [@b.col width="20%" property="major" title="专业(方向)"]${(adminclass.major.name)!} ${(adminclass.direction.name)!}[/@]
     [@b.col width="10%" property="stdType" title="学生类别"]${(adminclass.stdType.name)!}[/@]
     [@b.col width="7%" property="stdCount" title="学籍人数"]${adminclass.stdCount!}[/@]
-    [@b.col width="7%" property="instructor" title="辅导员"]${(adminclass.instructor.person.name)!}[/@]
+    [@b.col width="7%" property="instructor" title="辅导员"]${(adminclass.instructor.user.name)!}[/@]
   [/@]
 [/@]
 <form name="ImportExportForm" id="ImportExportForm" method="post" target="_blank"></form>

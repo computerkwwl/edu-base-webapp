@@ -29,7 +29,7 @@
 	</tr>
 	<tr>
     <td class="title" width="20%">辅导员</td>
-    <td width="30%">${(adminclass.instructor.person.name)!}</td>
+    <td width="30%">[#if adminclass.instructor.user??]${adminclass.instructor.user.name}(${adminclass.instructor.user.code})</td>
 		<td class="title" width="20%">更新日期:</td>
 		<td width="30%">${(adminclass.updatedAt?string('yyyy-MM-dd HH:mm:ss'))!}</td>
 	</tr>

@@ -3,7 +3,7 @@
 [@b.toolbar title="修改项目"]bar.addBack();[/@]
 [@b.tabs]
   [@b.tab label="项目维护"]
-  [#assign sa][#if project.id??]!update?id=${project.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if project.persisted]!update?id=${project.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="project.name" label="名称" value="${project.name!}" required="true" maxlength="20"/]
     [@b.select name="project.school.id" label="适用学校" value="${(project.school.id)!}" required="true" 
@@ -32,14 +32,14 @@
     [@b.radios label="是否辅修"  name="project.minor" value=project.minor items="1:common.yes,0:common.no"/]
     [@b.textarea name="project.description" label="描述" value="${project.description!}" maxlength="2000"/]
     [@b.startend label="生效失效时间" 
-      name="project.beginOn,project.endOn" required="false,false" 
+      name="project.beginOn,project.endOn" required="true,false" 
       start=project.beginOn end=project.endOn format="date"/]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
     [/@]
   [/@]
   [/@]
-  [#if project.id??]
+  [#if project.persisted]
   [@b.tab label="项目基础代码配置"]
   [@b.div href="project-code!search?projectCode.project.id=${project.id}"/]
     [/@]

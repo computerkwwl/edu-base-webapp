@@ -37,8 +37,9 @@ class IndexAction extends ActionSupport {
     put("menuJson", RemoteService.getMenusJson())
     put("appJson", RemoteService.getAppsJson())
     val projects = entityDao.findBy(classOf[Project], "code", List(project))
-    put("currentProject", projects.head)
-    put("school", projects.head.school)
+    val currentProject = projects.head
+    put("currentProject", currentProject)
+    put("school", currentProject.school)
     put("projects", entityDao.getAll(classOf[Project]))
     put("user", getUser())
     put("casConfig", casConfig)

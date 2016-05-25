@@ -17,6 +17,10 @@
     <td class="content">${courseType.enName!}</td>
   </tr>
   <tr>
+    <td class="title" width="20%">是否实践课</td>
+    <td class="content">${(courseType.practical?string("是","否"))!}</td>
+  </tr>
+  <tr>
     <td class="title" width="20%">生效时间</td>
     <td class="content" >${courseType.beginOn!}</td>
   </tr>

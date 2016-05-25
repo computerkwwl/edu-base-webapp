@@ -2,7 +2,7 @@
 [@b.head/]
 [@b.toolbar title="修改学籍状态日志"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if studentState.id??]!update?id=${studentState.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if studentState.persisted]!update?id=${studentState.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="studentState.grade" label="年级" value="${studentState.grade!}" required="true" /]    
     [@b.select name="studentState.department.id" label="行政管理院系" value="${(studentState.department.id)!}" required="true" 
@@ -18,7 +18,7 @@
     [@b.select name="studentState.adminclass.id" label="行政班级" value="${(studentState.adminclass.id)!}" required="true" 
                style="width:200px;" items=adminclasses option="id,name" empty="..."/]
     [@b.startend label="生效失效日期" 
-      name="studentState.beginOn,studentState.endOn" required="false,false" 
+      name="studentState.beginOn,studentState.endOn" required="true,false" 
       start=studentState.beginOn end=studentState.endOn format="date"/]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
     [/@]

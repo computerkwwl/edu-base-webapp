@@ -2,7 +2,7 @@
 [@b.head/]
 [@b.toolbar title="修改专业建设过程"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if majorJournal.id??]!update?id=${majorJournal.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if majorJournal.persisted]!update?id=${majorJournal.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.select name="majorJournal.education.id" label="培养层次" value="${(majorJournal.education.id)!}" required="true" 
                style="width:200px;" items=educations option="id,name" empty="..."/]
@@ -12,7 +12,7 @@
                style="width:200px;" items=departs option="id,name" empty="..."/]
     [@b.textfield name="majorJournal.duration" label="修读年限" value="${majorJournal.duration!}" required="true"/]
     [@b.startend label="生效失效时间" 
-      name="majorJournal.beginOn,majorJournal.endOn" required="false,false" 
+      name="majorJournal.beginOn,majorJournal.endOn" required="true,false" 
       start=majorJournal.beginOn end=majorJournal.endOn format="date"/]
     [@b.textfield name="majorJournal.remark" label="备注" value="${majorJournal.remark!}" maxlength="30"/]
     [@b.formfoot]

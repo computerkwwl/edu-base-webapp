@@ -39,7 +39,7 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     val stdTypes = findItems(classOf[StdType])
     put("stdTypes", stdTypes)
 
-    val instructors = findItemsByProject(classOf[Instructor])
+    val instructors = findItemsByProject(classOf[Instructor], "user.name")
     put("instructors", instructors)
 
     val tutors = findItemsByProject(classOf[Teacher])

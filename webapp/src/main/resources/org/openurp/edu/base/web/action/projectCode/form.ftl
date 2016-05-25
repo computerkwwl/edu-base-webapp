@@ -2,7 +2,7 @@
 [@b.head/]
 [@b.toolbar title="修改项目基础代码配置"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if projectCode.id??]!update?id=${projectCode.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if projectCode.persisted]!update?id=${projectCode.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.select name="projectCode.project.id" label="项目名称" value="${(projectCode.project.id)!}" required="true" 
                style="width:200px;" items=projects option="id,name" empty="..."  disabled="true"/]

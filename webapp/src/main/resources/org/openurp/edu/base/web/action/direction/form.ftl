@@ -3,7 +3,7 @@
 [@b.toolbar title="修改专业方向"]bar.addBack();[/@]
 [@b.tabs]
   [@b.tab label="基本信息"]
-  [#assign sa][#if direction.id??]!update?id=${direction.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if direction.persisted]!update?id=${direction.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="direction.code" label="代码" value="${direction.code!}" required="true" maxlength="20"/]
     [@b.textfield name="direction.name" label="名称" value="${direction.name!}" required="true" maxlength="20"/]
@@ -11,7 +11,7 @@
     [@b.select name="direction.major.id" label="专业" value="${(direction.major.id)!}" required="true" 
                style="width:200px;" items=majors option="id,name" empty="..."/]
     [@b.startend label="生效失效日期" 
-      name="direction.beginOn,direction.endOn" required="false,false" 
+      name="direction.beginOn,direction.endOn" required="true,false" 
       start=direction.beginOn end=direction.endOn format="date"/]
     [@b.textfield name="direction.remark" label="备注" value="${direction.remark!}" maxlength="30"/]
     [@b.formfoot]

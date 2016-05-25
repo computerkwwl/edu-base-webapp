@@ -2,7 +2,7 @@
 [@b.head/]
 [@b.toolbar title="修改课程分类课时信息"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if courseHour.id??]!update?id=${courseHour.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if courseHour.persisted]!update?id=${courseHour.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.select name="courseHour.course.id" label="对应课程" value="${(courseHour.course.id)!}" required="true" 
                style="width:200px;" items=courses option="id,name" empty="..."/]

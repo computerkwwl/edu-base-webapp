@@ -2,13 +2,13 @@
 [@b.head/]
 [@b.toolbar title="修改考试情况"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if examStatus.id??]!update?id=${examStatus.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if examStatus.persisted]!update?id=${examStatus.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="examStatus.code" label="代码" value="${examStatus.code!}" required="true" maxlength="20"/]
     [@b.textfield name="examStatus.name" label="名称" value="${examStatus.name!}" required="true" maxlength="20"/]
     [@b.textfield name="examStatus.enName" label="英文名" value="${examStatus.enName!}" maxlength="100"/]
     [@b.startend label="生效失效时间" 
-      name="examStatus.beginOn,examStatus.endOn" required="false,false" 
+      name="examStatus.beginOn,examStatus.endOn" required="true,false" 
       start=examStatus.beginOn end=examStatus.endOn format="date"/]
     [@b.textfield name="examStatus.remark" label="备注" value="${examStatus.remark!}" maxlength="3"/]
     [@b.formfoot]

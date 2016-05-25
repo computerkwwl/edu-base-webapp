@@ -2,16 +2,16 @@
 [@b.head/]
 [@b.toolbar title="修改课程类别"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if courseType.id??]!update?id=${courseType.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if courseType.persisted]!update?id=${courseType.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="courseType.code" label="代码" value="${courseType.code!}" required="true" maxlength="20"/]
     [@b.textfield name="courseType.name" label="名称" value="${courseType.name!}" required="true" maxlength="20"/]
     [@b.textfield name="courseType.enName" label="英文名" value="${courseType.enName!}" maxlength="100"/]
     [@b.startend label="生效失效时间" 
-      name="courseType.beginOn,courseType.endOn" required="false,false" 
+      name="courseType.beginOn,courseType.endOn" required="true,false" 
       start=courseType.beginOn end=courseType.endOn format="date"/]
     [@b.textfield name="courseType.remark" label="备注" value="${courseType.remark!}" maxlength="3"/]
-    [@b.radios label="是否理论课"  name="courseType.theoretical" value=courseType.theoretical items="1:common.yes,0:common.no"/]
+    [@b.radios label="是否实践课"  name="courseType.practical" value=courseType.practical items="1:common.yes,0:common.no"/]
     [@b.formfoot]
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
     [/@]

@@ -2,13 +2,13 @@
 [@b.head/]
 [@b.toolbar title="修改课时类别代码"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if courseHourType.id??]!update?id=${courseHourType.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if courseHourType.persisted]!update?id=${courseHourType.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="courseHourType.code" label="代码" value="${courseHourType.code!}" required="true" maxlength="20"/]
     [@b.textfield name="courseHourType.name" label="名称" value="${courseHourType.name!}" required="true" maxlength="20"/]
     [@b.textfield name="courseHourType.enName" label="英文名" value="${courseHourType.enName!}" maxlength="100"/]
     [@b.startend label="生效失效时间" 
-      name="courseHourType.beginOn,courseHourType.endOn" required="false,false" 
+      name="courseHourType.beginOn,courseHourType.endOn" required="true,false" 
       start=courseHourType.beginOn end=courseHourType.endOn format="date"/]
     [@b.textfield name="courseHourType.remark" label="备注" value="${courseHourType.remark!}" maxlength="3"/]
     [@b.formfoot]

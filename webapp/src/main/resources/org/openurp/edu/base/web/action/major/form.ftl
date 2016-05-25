@@ -9,7 +9,7 @@
     [@b.textfield name="major.name" label="名称" value="${major.name!}" required="true" maxlength="20"/]
     [@b.textfield name="major.enName" label="英文名" value="${major.enName!}" maxlength="100"/]
     [@b.textfield name="major.shortName" label="简称" value="${major.shortName!}" maxlength="100"/]
-    [@b.startend label="生效失效时间"   name="major.beginOn,major.endOn" required="false,false" start=major.beginOn end=major.endOn format="date"/]
+    [@b.startend label="生效失效时间"   name="major.beginOn,major.endOn" required="true,false" start=major.beginOn end=major.endOn format="date"/]
     [@b.textfield name="major.remark" label="备注" value="${major.remark!}" maxlength="30"/]
     [@b.formfoot]
       <input type="hidden" name="major.project.id" value="${major.project.id}"/>

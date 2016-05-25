@@ -2,13 +2,13 @@
 [@b.head/]
 [@b.toolbar title="修改考核方式"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if examMode.id??]!update?id=${examMode.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if examMode.persisted]!update?id=${examMode.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="examMode.code" label="代码" value="${examMode.code!}" required="true" maxlength="20"/]
     [@b.textfield name="examMode.name" label="名称" value="${examMode.name!}" required="true" maxlength="20"/]
     [@b.textfield name="examMode.enName" label="英文名" value="${examMode.enName!}" maxlength="100"/]
     [@b.startend label="生效失效时间" 
-      name="examMode.beginOn,examMode.endOn" required="false,false" 
+      name="examMode.beginOn,examMode.endOn" required="true,false" 
       start=examMode.beginOn end=examMode.endOn format="date"/]
     [@b.textfield name="examMode.remark" label="备注" value="${examMode.remark!}" maxlength="3"/]
     [@b.formfoot]

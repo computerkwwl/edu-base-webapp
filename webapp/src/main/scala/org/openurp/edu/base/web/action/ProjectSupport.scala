@@ -1,13 +1,15 @@
 package org.openurp.edu.base.web.action
 
 import scala.collection.mutable.Buffer
-
 import org.beangle.commons.collection.Order
 import org.beangle.data.dao.OqlBuilder
 import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.ignore
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.edu.base.model.Project
+import org.beangle.webmvc.api.view.View
+import org.beangle.commons.bean.Properties
+import org.beangle.commons.lang.reflect.BeanManifest
 
 abstract class ProjectRestfulAction[T <: Entity[_]] extends RestfulAction[T] with ProjectSupport {
 
@@ -16,6 +18,11 @@ abstract class ProjectRestfulAction[T <: Entity[_]] extends RestfulAction[T] wit
     populateConditions(builder)
     builder.where(simpleEntityName + ".project = :project", currentProject)
     builder.orderBy(get(Order.OrderStr).orNull).limit(getPageLimit)
+  }
+
+  override protected def saveAndRedirect(entity: T): View = {
+    Properties.set(entity, "project", currentProject)
+    super.saveAndRedirect(entity)
   }
 }
 
@@ -26,21 +33,16 @@ trait ProjectSupport { this: RestfulAction[_] =>
     entityDao.search(query).toBuffer
   }
 
-  //  protected def findItemsBySchool[T <: Entity[_]](clazz: Class[T], school: School): Buffer[T] = {
-  //    val query = OqlBuilder.from(clazz, "aa")
-  //    query.where("aa.school=:school", school)
-  //    entityDao.search(query).toBuffer
-  //  }
   def findItemsBySchool[T <: Entity[_]](clazz: Class[T]): Buffer[T] = {
     val query = OqlBuilder.from(clazz, "aa")
     query.where("aa.school=:school", currentProject.school)
     query.orderBy("code")
     entityDao.search(query).toBuffer
   }
-  def findItemsByProject[T <: Entity[_]](clazz: Class[T]): Buffer[T] = {
+  def findItemsByProject[T <: Entity[_]](clazz: Class[T], orderBy: String = "code"): Buffer[T] = {
     val query = OqlBuilder.from(clazz, "aa")
     query.where("aa.project=:project", currentProject)
-    query.orderBy("code")
+    query.orderBy(orderBy)
     entityDao.search(query).toBuffer
   }
 
@@ -52,6 +54,6 @@ trait ProjectSupport { this: RestfulAction[_] =>
         projects.head
       case None => throw new RuntimeException("Cannot find project parameter")
     }
-
   }
+
 }

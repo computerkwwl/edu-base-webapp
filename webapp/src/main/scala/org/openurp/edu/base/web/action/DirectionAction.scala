@@ -6,6 +6,7 @@ import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.edu.base.model.{ Direction, Major }
 import org.beangle.commons.collection.Order
+import org.beangle.webmvc.api.view.View
 
 @action("{project}/direction")
 class DirectionAction extends ProjectRestfulAction[Direction] {
@@ -20,6 +21,11 @@ class DirectionAction extends ProjectRestfulAction[Direction] {
 
     super.editSetting(entity)
   }
+
+  //  protected override def saveAndRedirect(entity: Direction): View = {
+  //    entity.project = currentProject
+  //    super.saveAndRedirect(entity)
+  //  }
 
 }
 

@@ -2,13 +2,13 @@
 [@b.head/]
 [@b.toolbar title="修改学生分类标签类型"]bar.addBack();[/@]
 [@b.tabs]
-  [#assign sa][#if stdLabelType.id??]!update?id=${stdLabelType.id!}[#else]!save[/#if][/#assign]
+  [#assign sa][#if stdLabelType.persisted]!update?id=${stdLabelType.id!}[#else]!save[/#if][/#assign]
   [@b.form action=sa theme="list"]
     [@b.textfield name="stdLabelType.code" label="代码" value="${stdLabelType.code!}" required="true" maxlength="20"/]
     [@b.textfield name="stdLabelType.name" label="名称" value="${stdLabelType.name!}" required="true" maxlength="20"/]
     [@b.textfield name="stdLabelType.enName" label="英文名" value="${stdLabelType.enName!}" maxlength="100"/]
     [@b.startend label="生效失效时间" 
-      name="stdLabelType.beginOn,stdLabelType.endOn" required="false,false" 
+      name="stdLabelType.beginOn,stdLabelType.endOn" required="true,false" 
       start=stdLabelType.beginOn end=stdLabelType.endOn format="date"/]
     [@b.textfield name="stdLabelType.remark" label="备注" value="${stdLabelType.remark!}" maxlength="3"/]
     [@b.formfoot]
