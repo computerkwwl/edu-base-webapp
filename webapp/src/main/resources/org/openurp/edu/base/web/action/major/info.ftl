@@ -21,8 +21,9 @@
     <td class="content">${major.shortName!}</td>
   </tr>
   <tr>
-    <td class="title" width="20%">项目名称</td>
-    <td class="content">${major.project.name}</td>
+    <td class="title" width="20%">方向列表</td>
+    <td class="content">[#list major.directions as d]${d.name}(${d.code}) [/#list]
+    </td>
   </tr>
   <tr>
     <td class="title" width="20%">生效时间</td>
