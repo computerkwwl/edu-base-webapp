@@ -19,16 +19,13 @@ import org.beangle.data.transfer.TransferListener
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
 
   protected override def indexSetting(): Unit = {
-    val educations = findItems(classOf[Education])
-    put("educations", educations)
-
-    val departments = findItemsBySchool(classOf[Department])
-    put("departments", departments)
+    put("educations", findItems(classOf[Education]))
+    put("departments", findItemsBySchool(classOf[Department]))
   }
 
   override def editSetting(entity: Adminclass) = {
-    val departments = findItemsBySchool(classOf[Department])
-    put("departments", departments)
+    put("educations", findItems(classOf[Education]))
+    put("departments", findItemsBySchool(classOf[Department]))
 
     val majors = findItemsByProject(classOf[Major])
     put("majors", majors)

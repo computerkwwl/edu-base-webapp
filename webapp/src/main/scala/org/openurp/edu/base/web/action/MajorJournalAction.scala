@@ -15,8 +15,6 @@ class MajorJournalAction extends RestfulAction[MajorJournal] with ProjectSupport
 
   override def editSetting(entity: MajorJournal) = {
 
-    put("majors", findItemsByProject(classOf[Major]))
-
     put("categories", findItems(classOf[DisciplineCategory]))
 
     put("educations", findItems(classOf[Education]))
@@ -27,4 +25,3 @@ class MajorJournalAction extends RestfulAction[MajorJournal] with ProjectSupport
   }
 
 }
-
