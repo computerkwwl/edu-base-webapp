@@ -16,20 +16,20 @@
     <td width="30%">${(adminclass.stdType.name)!}</td>
   </tr>
 	<tr>
-		<td class="title" width="20%">专业:</td>
-		<td width="30%">${(adminclass.major.name)!}</td>
-		<td class="title" width="20%">方向:</td>
-		<td width="30%">${(adminclass.direction.name)!}</td>
+		<td class="title" width="20%">专业/方向:</td>
+		<td width="30%">${(adminclass.major.name)!} ${(adminclass.direction.name)!}</td>
+		<td class="title" width="20%">校区:</td>
+		<td width="30%">${(adminclass.campus.name)!}</td>
 	</tr>
 	<tr>
 		<td class="title" width="20%">计划人数:</td>
 		<td width="30%">${(adminclass.planCount)!}</td>
-		<td class="title" width="20%">学籍有效人数:</td>
+		<td class="title" width="20%">人数:</td>
 		<td width="30%">${(adminclass.stdCount)!}</td>
 	</tr>
 	<tr>
     <td class="title" width="20%">辅导员</td>
-    <td width="30%">[#if adminclass.instructor.user??]${adminclass.instructor.user.name}(${adminclass.instructor.user.code})</td>
+    <td width="30%">[#if adminclass.instructor??]${adminclass.instructor.user.name}(${adminclass.instructor.user.code})[/#if]</td>
 		<td class="title" width="20%">更新日期:</td>
 		<td width="30%">${(adminclass.updatedAt?string('yyyy-MM-dd HH:mm:ss'))!}</td>
 	</tr>
@@ -92,7 +92,7 @@
 				</table>
 			[/#if]
 		[/#list]
-		[#if (students!?size)==0]
+		[#if (students?size)==0]
 			<div align="center" style="color:#666666;background:#E1ECFF;"><b>该班级没有学生!</b></div>
 		[/#if]
 	</div>

@@ -14,6 +14,7 @@ import org.openurp.edu.base.code.model.{ Education, StdType }
 import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
 import net.sf.jxls.transformer.XLSTransformer
 import org.beangle.data.transfer.TransferListener
+import org.openurp.base.model.Campus
 
 @action("{project}/adminclass")
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
@@ -21,11 +22,13 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
   protected override def indexSetting(): Unit = {
     put("educations", findItems(classOf[Education]))
     put("departments", findItemsBySchool(classOf[Department]))
+    put("campuses", findItemsBySchool(classOf[Campus]))
   }
 
   override def editSetting(entity: Adminclass) = {
     put("educations", findItems(classOf[Education]))
     put("departments", findItemsBySchool(classOf[Department]))
+    put("campuses", findItemsBySchool(classOf[Campus]))
 
     val majors = findItemsByProject(classOf[Major])
     put("majors", majors)
