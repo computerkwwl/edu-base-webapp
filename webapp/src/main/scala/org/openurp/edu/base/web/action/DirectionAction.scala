@@ -13,7 +13,7 @@ import org.openurp.edu.base.model.DirectionJournal
 class DirectionAction extends ProjectRestfulAction[Direction] {
 
   override def indexSetting() = {
-    put("majors", findItems(classOf[Major]))
+    put("majors", findItemsByProject(classOf[Major]))
   }
   override def editSetting(entity: Direction) = {
 
