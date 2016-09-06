@@ -4,22 +4,23 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.2</version>
   </parent>
   <groupId>org.openurp.edu.base</groupId>
-  <artifactId>openurp-edu-base-parent</artifactId>
+  <artifactId>openurp-edu-base-web-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>OpenURP Edu Base Parent</name>
-  
+  <name>OpenURP Edu Base Web Parent</name>
+
   <modules>
-    <module>webapp</module>
+    <module>adminapp</module>
   </modules>
 
   <properties>
-    <openurp.platform.version>0.0.10-SNAPSHOT</openurp.platform.version>
-    <openurp.api.version>0.0.9-SNAPSHOT</openurp.api.version>
+    <openurp.platform.version>0.0.11</openurp.platform.version>
+    <openurp.api.version>0.0.10</openurp.api.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
     <jxls.version>1.0.3</jxls.version>
   </properties>
+
 </project>
