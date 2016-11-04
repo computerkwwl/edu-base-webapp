@@ -30,7 +30,7 @@
       items1st=timeSettings items2nd= project.timeSettings 
       option="id,name"/]
     [@b.radios label="是否辅修"  name="project.minor" value=project.minor items="1:common.yes,0:common.no"/]
-    [@b.textarea name="project.description" label="描述" value="${project.description!}" maxlength="2000"/]
+    [@b.textarea name="project.description" label="描述" value="${project.description!}" required="true" maxlength="2000" /]
     [@b.startend label="生效失效时间" 
       name="project.beginOn,project.endOn" required="true,false" 
       start=project.beginOn end=project.endOn format="date"/]
