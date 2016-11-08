@@ -8,11 +8,11 @@
     [@b.textfield name="adminclass.code" label="代码" value="${adminclass.code!}" required="true" maxlength="20"/]
     [@b.textfield name="adminclass.name" label="名称" value="${adminclass.name!}" required="true" maxlength="20"/]
     [@b.textfield name="adminclass.shortName" label="简称" value="${adminclass.shortName!}" maxlength="100"/]
-    [@b.select name="adminclass.campus.id" label="校区" value="${(adminclass.campus.id)!}"  style="width:100px;" items=campuses option="id,name" empty="..."/]
+    [@b.select name="adminclass.campus.id" label="校区" value="${(adminclass.campus.id)!}" required="true"  style="width:100px;" items=campuses option="id,name" empty="..."/]
     [@b.select name="adminclass.department.id" label="院系" value="${(adminclass.department.id)!}" required="true" 
                style="width:200px;" items=departments option="id,name" empty="..."/]
-    [@b.select name="adminclass.education.id" label="培养层次" value="${(adminclass.education.id)!}" style="width:200px;" items=educations option="id,name" empty="..."/]
-    [@b.select name="adminclass.major.id" label="专业" value="${(adminclass.major.id)!}"  
+    [@b.select name="adminclass.education.id" label="培养层次" value="${(adminclass.education.id)!}" style="width:200px;" required="true"  items=educations option="id,name" empty="..."/]
+    [@b.select name="adminclass.major.id" label="专业" value="${(adminclass.major.id)!}" required="true"  
                style="width:200px;" items=majors option="id,name" empty="..."/]
     [@b.select name="adminclass.direction.id" label="方向" value="${(adminclass.direction.id)!}" 
                style="width:200px;" items=directions option="id,name" empty="..."/]
