@@ -14,6 +14,7 @@
     [@b.col width="15%" property="roomType" title="教室类型"]${(classroom.roomType.name)!}[/@]
     [@b.col width="10%" property="courseCapacity" title="上课容量"]${classroom.courseCapacity!}[/@]
     [@b.col width="10%" property="examCapacity" title="考试容量"]${classroom.examCapacity!}[/@]
+    [@b.col width="10%" property="room.available" title="是否可借"]${(classroom.room.available?string("是","否"))!}[/@]
   [/@]
   [/@]
 [@b.foot/]
