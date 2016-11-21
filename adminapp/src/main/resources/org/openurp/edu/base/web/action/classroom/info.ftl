@@ -32,12 +32,6 @@
     <td class="title" width="20%">考试容量</td>
     <td class="content">${classroom.examCapacity!}</td>
   </tr>
-  [#if classroom.room??]
-    <tr>
-      <td class="title" width="20%">是否可借</td>
-      <td class="content">${(classroom.room.available?string("是","否"))!}</td>
-    </tr>
-  [/#if]
 </table>
 
 [@b.foot/]

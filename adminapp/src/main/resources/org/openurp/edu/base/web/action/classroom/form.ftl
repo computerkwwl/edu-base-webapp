@@ -13,9 +13,6 @@
                style="width:200px;" items=roomTypes option="id,name" empty="..."  required="true"/]
     [@b.textfield name="classroom.courseCapacity" label="上课容量" value="${classroom.courseCapacity!}" maxlength="20"/]
     [@b.textfield name="classroom.examCapacity" label="考试容量" value="${classroom.examCapacity!}" maxlength="20"/]
-    [#if classroom.room??]
-      [@b.radios label="是否可借"  name="classroom.room.available" value=classroom.room.available items="1:common.yes,0:common.no"/]
-    [/#if]
     [@b.formfoot]
       <input type="hidden" name="classroom.project.id" value="${classroom.project.id}"/>
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]
