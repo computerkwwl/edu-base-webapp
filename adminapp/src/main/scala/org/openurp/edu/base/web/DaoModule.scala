@@ -22,7 +22,7 @@ package org.openurp.edu.base.web
  * along with Beangle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import org.beangle.commons.inject.bind.AbstractBindModule
+import org.beangle.commons.cdi.bind.AbstractBindModule
 import org.beangle.data.hibernate.spring.web.OpenSessionInViewInterceptor
 import org.springframework.beans.factory.config.PropertiesFactoryBean
 import org.springframework.transaction.interceptor.TransactionProxyFactoryBean
@@ -39,8 +39,13 @@ import org.beangle.data.hibernate.spring.LocalSessionFactoryBean
 import org.beangle.data.hibernate.spring.web.OpenSessionInViewInterceptor
 import org.springframework.beans.factory.config.PropertiesFactoryBean
 import org.springframework.transaction.interceptor.TransactionProxyFactoryBean
+import org.beangle.commons.lang.ClassLoaders
 
 object DaoModule extends AbstractBindModule {
+
+  def main(args:Array[String]){
+     println(ClassLoaders.getResource("org/beangle/commons/inject/bind/AbstractBindModule.class"));
+  }
 
   protected override def binding(): Unit = {
     bind("HibernateConfig.default", classOf[PropertiesFactoryBean]).property(

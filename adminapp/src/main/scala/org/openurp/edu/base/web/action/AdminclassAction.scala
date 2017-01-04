@@ -2,8 +2,8 @@ package org.openurp.edu.base.web.action
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.{ ClassLoaders, Strings }
-import org.beangle.data.dao.OqlBuilder
-import org.beangle.data.model.Entity
+import org.beangle.commons.dao.OqlBuilder
+import org.beangle.commons.model.Entity
 import org.beangle.data.transfer.listener.ForeignerListener
 import org.beangle.webmvc.api.annotation.{ action, mapping, param }
 import org.beangle.webmvc.api.context.ActionContext
@@ -52,7 +52,6 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
    * 查看班级信息
    * @return @
    */
-
   @mapping(value = "{id}")
   override def info(@param("id") id: String): String = {
     val builder = OqlBuilder.from(classOf[StudentState], "studentState")

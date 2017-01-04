@@ -8,7 +8,7 @@ import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.code.model.CourseCategory
 import org.openurp.edu.base.code.model.StdLabelType
 import org.openurp.edu.base.code.model.ExamMode
-import org.beangle.data.dao.OqlBuilder
+import org.beangle.commons.dao.OqlBuilder
 import org.openurp.edu.base.code.model.StdLabel
 import org.openurp.edu.base.code.model.ExamStatus
 import org.openurp.edu.base.code.model.CourseAbilityRate

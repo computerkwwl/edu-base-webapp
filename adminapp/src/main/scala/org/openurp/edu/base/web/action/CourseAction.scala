@@ -1,7 +1,7 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.dao.OqlBuilder
-import org.beangle.data.model.Entity
+import org.beangle.commons.dao.OqlBuilder
+import org.beangle.commons.model.Entity
 import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.api.view.View
 import org.openurp.base.model.Department

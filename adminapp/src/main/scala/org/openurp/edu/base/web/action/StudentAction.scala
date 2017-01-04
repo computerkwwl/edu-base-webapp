@@ -4,8 +4,8 @@ import scala.collection.mutable.Buffer
 
 import org.beangle.commons.collection.Order
 import org.beangle.commons.lang.Strings
-import org.beangle.data.dao.OqlBuilder
-import org.beangle.data.model.Entity
+import org.beangle.commons.dao.OqlBuilder
+import org.beangle.commons.model.Entity
 import org.beangle.webmvc.api.annotation.{ action, mapping }
 import org.beangle.webmvc.api.view.View
 import org.beangle.webmvc.entity.action.RestfulAction

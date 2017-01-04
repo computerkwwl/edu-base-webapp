@@ -1,6 +1,6 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.data.model.Entity
+import org.beangle.commons.model.Entity
 import org.beangle.data.transfer.{ EntityTransfer, ImporterFactory, TransferResult }
 import org.beangle.data.transfer.io.TransferFormat
 import org.beangle.data.transfer.listener.ForeignerListener

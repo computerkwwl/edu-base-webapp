@@ -12,7 +12,7 @@ import org.beangle.webmvc.api.view.View
 import org.openurp.base.model.User
 import org.openurp.people.base.model.Name
 import org.beangle.webmvc.execution.Handler
-import org.beangle.data.dao.OqlBuilder
+import org.beangle.commons.dao.OqlBuilder
 import org.openurp.base.code.model.UserCategory
 import org.openurp.edu.base.code.model.TeacherType
 

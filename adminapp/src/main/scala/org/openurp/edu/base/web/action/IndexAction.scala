@@ -3,8 +3,8 @@ package org.openurp.edu.base.web.action
 import org.openurp.platform.api.app.UrpApp
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.security.context.SecurityContext
-import org.beangle.data.dao.EntityDao
-import org.beangle.data.dao.OqlBuilder
+import org.beangle.commons.dao.EntityDao
+import org.beangle.commons.dao.OqlBuilder
 import org.beangle.security.realm.cas.CasConfig
 import org.beangle.webmvc.api.annotation.param
 import org.beangle.webmvc.api.view.View
