@@ -62,12 +62,16 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
       entity.user = user
       entity.updatedAt = new java.util.Date
       try {
-        entityDao.saveOrUpdate(user, person, entity)
+        if (null != person.code) {
+          entityDao.saveOrUpdate(user, person, entity)
+        }else{
+          entityDao.saveOrUpdate(user, entity)
+        }
         redirect("search", "info.save.success")
       } catch {
         case e: Exception => {
           val redirectTo = Handler.mapping.method.getName match {
-            case "save"   => "editNew"
+            case "save" => "editNew"
             case "update" => "edit"
           }
           logger.info("save forwad failure", e)

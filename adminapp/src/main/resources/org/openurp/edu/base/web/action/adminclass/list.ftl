@@ -5,12 +5,12 @@
     bar.addItem("${b.text("action.new")}",action.add());
     bar.addItem("${b.text("action.modify")}",action.edit());
     bar.addItem("${b.text("action.delete")}",action.remove("确认删除?"));
-
+   [#-- 
     var bar1=bar.addMenu("导入导出班级");
     bar1.addItem("导入班级","importStdOrAdminclass('adminclass')");
     bar1.addItem("下载模版","downloadTemplate('adminclass')");
     bar1.addItem("导出班级","exportData('adminclass')");
-   [#-- 
+
     var bar2=bar.addMenu("导入导出班级学生");
     bar2.addItem("导入班级学生","importStdOrAdminclass('std')");
     bar2.addItem("下载模版","downloadTemplate('std')");
