@@ -10,6 +10,7 @@ import org.openurp.base.model.School
 import scala.collection.mutable.Buffer
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.base.model.Campus
+import org.beangle.webmvc.api.view.View
 
 @action("{project}/classroom")
 class ClassroomAction extends ProjectRestfulAction[Classroom] {
@@ -19,6 +20,12 @@ class ClassroomAction extends ProjectRestfulAction[Classroom] {
     put("roomTypes", roomTypes)
   }
 
+  override protected def saveAndRedirect(entity: Classroom): View = {
+    entity.updatedAt = new java.util.Date();
+    entity.beginOn = new java.sql.Date(System.currentTimeMillis);
+    super.saveAndRedirect(entity)
+  }
+
   override def editSetting(entity: Classroom) = {
 
     if (null == entity.project) {
@@ -26,7 +33,7 @@ class ClassroomAction extends ProjectRestfulAction[Classroom] {
     }
     val roomTypes = findItems(classOf[ClassroomType])
     put("roomTypes", roomTypes)
-    
+
     val campuses = findItemsBySchool(classOf[Campus])
     put("campuses", campuses)
 

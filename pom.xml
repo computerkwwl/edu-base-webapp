@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.6</version>
   </parent>
   <groupId>org.openurp.edu.base</groupId>
   <artifactId>openurp-edu-base-web-parent</artifactId>
@@ -17,8 +17,8 @@
   </modules>
 
   <properties>
-    <openurp.platform.version>0.0.13</openurp.platform.version>
-    <openurp.api.version>0.0.12-SNAPSHOT</openurp.api.version>
+    <openurp.platform.version>0.0.15</openurp.platform.version>
+    <openurp.api.version>0.0.17</openurp.api.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
     <jxls.version>1.0.3</jxls.version>
   </properties>

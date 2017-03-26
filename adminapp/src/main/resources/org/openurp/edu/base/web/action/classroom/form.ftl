@@ -15,6 +15,8 @@
                style="width:200px;" items=roomTypes option="id,name" empty="..."  required="true"/]
     [@b.textfield name="classroom.courseCapacity" label="上课容量" required="true"  value="${classroom.courseCapacity!}" maxlength="20"/]
     [@b.textfield name="classroom.examCapacity" label="考试容量"  required="true" value="${classroom.examCapacity!}" maxlength="20"/]
+    [@b.startend label="生效失效时间"  name="classroom.beginOn,classroom.endOn" required="false,false" 
+      start=classroom.beginOn end=classroom.endOn format="date"/]
     [@b.formfoot]
       <input type="hidden" name="classroom.project.id" value="${classroom.project.id}"/>
       [@b.reset/]&nbsp;&nbsp;[@b.submit value="action.submit"/]

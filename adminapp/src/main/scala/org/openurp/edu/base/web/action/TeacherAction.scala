@@ -1,5 +1,6 @@
 package org.openurp.edu.base.web.action
 
+import org.beangle.commons.lang.Strings
 import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.base.model.Department
@@ -48,7 +49,7 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
       }
 
       var person = populate(classOf[Person])
-      if (null != person.code) {
+      if (Strings.isNotEmpty(person.code)) {
         val people = entityDao.findBy(classOf[Person], "code", List(person.code))
         if (people.size == 0) {
           person.name = new Name
@@ -62,7 +63,7 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
       entity.user = user
       entity.updatedAt = new java.util.Date
       try {
-        if (null != person.code) {
+        if (Strings.isNotEmpty( person.code)) {
           entityDao.saveOrUpdate(user, person, entity)
         }else{
           entityDao.saveOrUpdate(user, entity)
