@@ -15,6 +15,7 @@ import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, St
 import net.sf.jxls.transformer.XLSTransformer
 import org.beangle.data.transfer.TransferListener
 import org.openurp.base.model.Campus
+import org.beangle.commons.collection.Order
 
 @action("{project}/adminclass")
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
@@ -23,6 +24,21 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     put("educations", findItems(classOf[Education]))
     put("departments", findItemsBySchool(classOf[Department]))
     put("campuses", findItemsBySchool(classOf[Campus]))
+    println(this)
+  }
+  
+  override def getQueryBuilder(): OqlBuilder[Adminclass] = {
+    val builder: OqlBuilder[Adminclass] = OqlBuilder.from(entityName, simpleEntityName)
+    populateConditions(builder)
+    builder.where(simpleEntityName + ".project = :project", currentProject)
+    getBoolean("active") foreach { active => 
+      if (active) {
+        builder.where("adminclass.beginOn <= :now and (adminclass.endOn is null or adminclass.endOn >= :now)", new java.sql.Date(System.currentTimeMillis()))
+      } else {
+        builder.where("not (adminclass.beginOn <= :now and (adminclass.endOn is null or adminclass.endOn >= :now))", new java.sql.Date(System.currentTimeMillis()))
+      }
+    }
+    builder.orderBy(get(Order.OrderStr).orNull).limit(getPageLimit)
   }
 
   override def editSetting(entity: Adminclass) = {

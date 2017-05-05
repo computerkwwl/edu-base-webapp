@@ -12,6 +12,7 @@
       [@b.select style="width:100px" name="adminclass.education.id" label="培养层次" items=educations option="id,name" empty="..." /]
       [@b.select style="width:100px" name="adminclass.campus.id" label="校区" items=campuses option="id,name" empty="..." /]
       <input type="hidden" name="orderBy" value="adminclass.code desc"/>
+      [@b.select style="width:100px" name="active" label="是否有效" items={"1":"是", "0":"否"} empty="..." /]
     [/@]
     </td>
     <td class="index_content">[@b.div id="adminclasslist" href="!search?orderBy=adminclass.code desc"/]
