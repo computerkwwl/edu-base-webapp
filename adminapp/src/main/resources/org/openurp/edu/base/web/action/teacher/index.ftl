@@ -9,6 +9,7 @@
       [@b.textfields names="teacher.user.name;姓名"/]
       [@b.select name="teacher.user.department.id" label="部门" items=departments empty="..." style="width:100px"/]
       [@b.select name="teacher.teacherType.id" label="类型" items=teacherTypes empty="..." style="width:100px"/]
+      [@b.select style="width:100px" name="active" label="是否有效" items={"1":"是", "0":"否"} empty="..." /]
       <input type="hidden" name="orderBy" value="teacher.user.code"/>
     [/@]
     </td>

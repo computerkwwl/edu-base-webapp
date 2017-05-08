@@ -1,21 +1,31 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.{ ClassLoaders, Strings }
-import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.model.Entity
-import org.beangle.data.transfer.listener.ForeignerListener
-import org.beangle.webmvc.api.annotation.{ action, mapping, param }
-import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.api.view.{ Status, Stream, View }
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.{ Education, StdType }
-import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
 import net.sf.jxls.transformer.XLSTransformer
-import org.beangle.data.transfer.TransferListener
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.dao.OqlBuilder
+import org.beangle.commons.lang.ClassLoaders
+import org.beangle.commons.lang.Strings
+import org.beangle.data.transfer.listener.ForeignerListener
+import org.beangle.webmvc.api.annotation.action
+import org.beangle.webmvc.api.annotation.mapping
+import org.beangle.webmvc.api.annotation.param
+import org.beangle.webmvc.api.context.ActionContext
+import org.beangle.webmvc.api.view.Status
+import org.beangle.webmvc.api.view.Stream
+import org.beangle.webmvc.api.view.View
+import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.Education
+import org.openurp.edu.base.model.Adminclass
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.StudentState
+import org.openurp.edu.base.web.action.assist.SearchQueryCollection
+import org.openurp.edu.base.code.model.StdType
 import org.openurp.base.model.Campus
-import org.beangle.commons.collection.Order
+import org.openurp.edu.base.model.Major
+import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.base.model.Instructor
+import org.beangle.data.transfer.TransferListener
+import org.openurp.edu.base.model.Direction
 
 @action("{project}/adminclass")
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
@@ -28,17 +38,7 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
   }
   
   override def getQueryBuilder(): OqlBuilder[Adminclass] = {
-    val builder: OqlBuilder[Adminclass] = OqlBuilder.from(entityName, simpleEntityName)
-    populateConditions(builder)
-    builder.where(simpleEntityName + ".project = :project", currentProject)
-    getBoolean("active") foreach { active => 
-      if (active) {
-        builder.where("adminclass.beginOn <= :now and (adminclass.endOn is null or adminclass.endOn >= :now)", new java.sql.Date(System.currentTimeMillis()))
-      } else {
-        builder.where("not (adminclass.beginOn <= :now and (adminclass.endOn is null or adminclass.endOn >= :now))", new java.sql.Date(System.currentTimeMillis()))
-      }
-    }
-    builder.orderBy(get(Order.OrderStr).orNull).limit(getPageLimit)
+    SearchQueryCollection.addBeginOnQuery(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override def editSetting(entity: Adminclass) = {

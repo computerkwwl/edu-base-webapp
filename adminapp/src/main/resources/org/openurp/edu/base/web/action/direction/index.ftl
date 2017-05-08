@@ -8,6 +8,7 @@
       [@b.textfields names="direction.code;代码"/]
       [@b.textfields names="direction.name;名称"/]
       [@b.select name="direction.major.id" label="专业" items=majors empty="..." style="width:100px"/]
+      [@b.select style="width:100px" name="active" label="是否有效" items={"1":"是", "0":"否"} empty="..." /]
       <input type="hidden" name="orderBy" value="direction.code"/>
     [/@]
     </td>
