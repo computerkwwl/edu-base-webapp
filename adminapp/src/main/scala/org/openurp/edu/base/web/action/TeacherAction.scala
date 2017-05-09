@@ -1,24 +1,28 @@
 package org.openurp.edu.base.web.action
 
+import org.beangle.commons.bean.Properties
+import org.beangle.commons.dao.OqlBuilder
 import org.beangle.commons.lang.Strings
 import org.beangle.webmvc.api.annotation.action
-import org.beangle.webmvc.entity.action.RestfulAction
+import org.beangle.webmvc.api.view.View
+import org.beangle.webmvc.execution.Handler
+import org.openurp.base.code.model.UserCategory
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.Teacher
-import org.openurp.people.base.model.Person
+import org.openurp.base.model.User
 import org.openurp.code.person.model.Gender
 import org.openurp.code.person.model.IdType
-import org.beangle.commons.bean.Properties
-import org.beangle.webmvc.api.view.View
-import org.openurp.base.model.User
-import org.openurp.people.base.model.Name
-import org.beangle.webmvc.execution.Handler
-import org.beangle.commons.dao.OqlBuilder
-import org.openurp.base.code.model.UserCategory
 import org.openurp.edu.base.code.model.TeacherType
+import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.base.web.action.helper.QueryHelper
+import org.openurp.people.base.model.Name
+import org.openurp.people.base.model.Person
 
 @action("{project}/teacher")
 class TeacherAction extends ProjectRestfulAction[Teacher] {
+  
+  override def getQueryBuilder(): OqlBuilder[Teacher] = {
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
+  }
 
   override def editSetting(entity: Teacher) = {
     if (!entity.persisted) {
@@ -45,6 +49,8 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
         user.category = new UserCategory
         //FIXME Teacher Category ID =1
         user.category.id = 1
+        user.beginOn = entity.beginOn
+        user.endOn = entity.endOn
         user.updatedAt = new java.util.Date
       }
 

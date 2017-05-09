@@ -1,20 +1,19 @@
 package org.openurp.edu.base.web.action
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.{ ClassLoaders, Strings }
 import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.model.Entity
+import org.beangle.commons.lang.{ ClassLoaders, Strings }
+import org.beangle.data.transfer.TransferListener
 import org.beangle.data.transfer.listener.ForeignerListener
 import org.beangle.webmvc.api.annotation.{ action, mapping, param }
 import org.beangle.webmvc.api.context.ActionContext
 import org.beangle.webmvc.api.view.{ Status, Stream, View }
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.model.Department
+import org.openurp.base.model.{ Campus, Department }
 import org.openurp.edu.base.code.model.{ Education, StdType }
 import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
+import org.openurp.edu.base.web.action.helper.QueryHelper
+
 import net.sf.jxls.transformer.XLSTransformer
-import org.beangle.data.transfer.TransferListener
-import org.openurp.base.model.Campus
 
 @action("{project}/adminclass")
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
@@ -23,6 +22,11 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     put("educations", findItems(classOf[Education]))
     put("departments", findItemsBySchool(classOf[Department]))
     put("campuses", findItemsBySchool(classOf[Campus]))
+    println(this)
+  }
+
+  override def getQueryBuilder(): OqlBuilder[Adminclass] = {
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override def editSetting(entity: Adminclass) = {

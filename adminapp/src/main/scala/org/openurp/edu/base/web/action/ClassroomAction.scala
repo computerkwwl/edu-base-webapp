@@ -11,6 +11,7 @@ import scala.collection.mutable.Buffer
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.base.model.Campus
 import org.beangle.webmvc.api.view.View
+import org.openurp.edu.base.web.action.helper.QueryHelper
 
 @action("{project}/classroom")
 class ClassroomAction extends ProjectRestfulAction[Classroom] {
@@ -18,6 +19,10 @@ class ClassroomAction extends ProjectRestfulAction[Classroom] {
   protected override def indexSetting(): Unit = {
     val roomTypes = findItems(classOf[ClassroomType])
     put("roomTypes", roomTypes)
+  }
+  
+  override def getQueryBuilder(): OqlBuilder[Classroom] = {
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override protected def saveAndRedirect(entity: Classroom): View = {
