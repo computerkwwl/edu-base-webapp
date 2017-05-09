@@ -1,4 +1,4 @@
-package org.openurp.edu.base.web.action.assist
+package org.openurp.edu.base.web.action.helper
 
 import org.beangle.commons.dao.OqlBuilder
 import org.beangle.commons.model.Entity

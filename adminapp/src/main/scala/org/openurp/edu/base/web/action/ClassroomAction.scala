@@ -11,7 +11,7 @@ import scala.collection.mutable.Buffer
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.base.model.Campus
 import org.beangle.webmvc.api.view.View
-import org.openurp.edu.base.web.action.assist.QueryHelper
+import org.openurp.edu.base.web.action.helper.QueryHelper
 
 @action("{project}/classroom")
 class ClassroomAction extends ProjectRestfulAction[Classroom] {

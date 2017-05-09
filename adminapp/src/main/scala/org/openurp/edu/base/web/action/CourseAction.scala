@@ -8,7 +8,7 @@ import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.{ CourseCategory, CourseType, Education, ExamMode, ScoreMarkStyle }
 import org.openurp.edu.base.model.{ Course, Major }
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.web.action.assist.QueryHelper
+import org.openurp.edu.base.web.action.helper.QueryHelper
 
 @action("{project}/course")
 class CourseAction extends ProjectRestfulAction[Course] {

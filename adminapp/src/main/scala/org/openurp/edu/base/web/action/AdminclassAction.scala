@@ -11,7 +11,7 @@ import org.beangle.webmvc.api.view.{ Status, Stream, View }
 import org.openurp.base.model.{ Campus, Department }
 import org.openurp.edu.base.code.model.{ Education, StdType }
 import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
-import org.openurp.edu.base.web.action.assist.QueryHelper
+import org.openurp.edu.base.web.action.helper.QueryHelper
 
 import net.sf.jxls.transformer.XLSTransformer
 

@@ -13,7 +13,7 @@ import org.openurp.code.person.model.Gender
 import org.openurp.code.person.model.IdType
 import org.openurp.edu.base.code.model.TeacherType
 import org.openurp.edu.base.model.Teacher
-import org.openurp.edu.base.web.action.assist.QueryHelper
+import org.openurp.edu.base.web.action.helper.QueryHelper
 import org.openurp.people.base.model.Name
 import org.openurp.people.base.model.Person
 

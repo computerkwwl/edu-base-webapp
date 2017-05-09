@@ -8,7 +8,7 @@ import org.openurp.edu.base.model.{ Direction, Major }
 import org.beangle.commons.collection.Order
 import org.beangle.webmvc.api.view.View
 import org.openurp.edu.base.model.DirectionJournal
-import org.openurp.edu.base.web.action.assist.QueryHelper
+import org.openurp.edu.base.web.action.helper.QueryHelper
 
 @action("{project}/direction")
 class DirectionAction extends ProjectRestfulAction[Direction] {
