@@ -8,7 +8,7 @@ import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.{ CourseCategory, CourseType, Education, ExamMode, ScoreMarkStyle }
 import org.openurp.edu.base.model.{ Course, Major }
 import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.edu.base.web.action.assist.SearchQueryCollection
+import org.openurp.edu.base.web.action.assist.QueryHelper
 
 @action("{project}/course")
 class CourseAction extends ProjectRestfulAction[Course] {
@@ -22,7 +22,7 @@ class CourseAction extends ProjectRestfulAction[Course] {
   }
   
   override def getQueryBuilder(): OqlBuilder[Course] = {
-    SearchQueryCollection.addBeginOnQuery(super.getQueryBuilder(), getBoolean("active"))
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override def editSetting(entity: Course) = {

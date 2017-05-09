@@ -8,7 +8,7 @@ import org.openurp.edu.base.model.{ Direction, Major }
 import org.beangle.commons.collection.Order
 import org.beangle.webmvc.api.view.View
 import org.openurp.edu.base.model.DirectionJournal
-import org.openurp.edu.base.web.action.assist.SearchQueryCollection
+import org.openurp.edu.base.web.action.assist.QueryHelper
 
 @action("{project}/direction")
 class DirectionAction extends ProjectRestfulAction[Direction] {
@@ -18,7 +18,7 @@ class DirectionAction extends ProjectRestfulAction[Direction] {
   }
   
   override def getQueryBuilder(): OqlBuilder[Direction] = {
-    SearchQueryCollection.addBeginOnQuery(super.getQueryBuilder(), getBoolean("active"))
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
   
   override def editSetting(entity: Direction) = {

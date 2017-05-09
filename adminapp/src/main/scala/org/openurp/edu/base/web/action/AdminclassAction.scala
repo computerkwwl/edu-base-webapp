@@ -1,31 +1,19 @@
 package org.openurp.edu.base.web.action
 
-import net.sf.jxls.transformer.XLSTransformer
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.lang.ClassLoaders
-import org.beangle.commons.lang.Strings
-import org.beangle.data.transfer.listener.ForeignerListener
-import org.beangle.webmvc.api.annotation.action
-import org.beangle.webmvc.api.annotation.mapping
-import org.beangle.webmvc.api.annotation.param
-import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.api.view.Status
-import org.beangle.webmvc.api.view.Stream
-import org.beangle.webmvc.api.view.View
-import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.Education
-import org.openurp.edu.base.model.Adminclass
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.model.StudentState
-import org.openurp.edu.base.web.action.assist.SearchQueryCollection
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.base.model.Campus
-import org.openurp.edu.base.model.Major
-import org.openurp.edu.base.model.Teacher
-import org.openurp.edu.base.model.Instructor
+import org.beangle.commons.lang.{ ClassLoaders, Strings }
 import org.beangle.data.transfer.TransferListener
-import org.openurp.edu.base.model.Direction
+import org.beangle.data.transfer.listener.ForeignerListener
+import org.beangle.webmvc.api.annotation.{ action, mapping, param }
+import org.beangle.webmvc.api.context.ActionContext
+import org.beangle.webmvc.api.view.{ Status, Stream, View }
+import org.openurp.base.model.{ Campus, Department }
+import org.openurp.edu.base.code.model.{ Education, StdType }
+import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
+import org.openurp.edu.base.web.action.assist.QueryHelper
+
+import net.sf.jxls.transformer.XLSTransformer
 
 @action("{project}/adminclass")
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
@@ -36,9 +24,9 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     put("campuses", findItemsBySchool(classOf[Campus]))
     println(this)
   }
-  
+
   override def getQueryBuilder(): OqlBuilder[Adminclass] = {
-    SearchQueryCollection.addBeginOnQuery(super.getQueryBuilder(), getBoolean("active"))
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override def editSetting(entity: Adminclass) = {

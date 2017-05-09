@@ -11,7 +11,7 @@ import scala.collection.mutable.Buffer
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.base.model.Campus
 import org.beangle.webmvc.api.view.View
-import org.openurp.edu.base.web.action.assist.SearchQueryCollection
+import org.openurp.edu.base.web.action.assist.QueryHelper
 
 @action("{project}/classroom")
 class ClassroomAction extends ProjectRestfulAction[Classroom] {
@@ -22,7 +22,7 @@ class ClassroomAction extends ProjectRestfulAction[Classroom] {
   }
   
   override def getQueryBuilder(): OqlBuilder[Classroom] = {
-    SearchQueryCollection.addBeginOnQuery(super.getQueryBuilder(), getBoolean("active"))
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override protected def saveAndRedirect(entity: Classroom): View = {

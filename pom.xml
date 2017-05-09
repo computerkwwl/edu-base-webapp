@@ -18,7 +18,7 @@
 
   <properties>
     <openurp.platform.version>0.0.15</openurp.platform.version>
-    <openurp.api.version>0.0.17</openurp.api.version>
+    <openurp.api.version>0.0.18-SNAPSHOT</openurp.api.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
     <jxls.version>1.0.3</jxls.version>
   </properties>
