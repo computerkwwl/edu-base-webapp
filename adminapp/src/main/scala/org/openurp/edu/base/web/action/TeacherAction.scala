@@ -49,6 +49,8 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
         user.category = new UserCategory
         //FIXME Teacher Category ID =1
         user.category.id = 1
+        user.beginOn = entity.beginOn
+        user.endOn = entity.endOn
         user.updatedAt = new java.util.Date
       }
 
