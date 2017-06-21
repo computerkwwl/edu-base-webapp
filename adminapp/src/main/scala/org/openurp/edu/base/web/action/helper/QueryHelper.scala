@@ -1,7 +1,7 @@
 package org.openurp.edu.base.web.action.helper
 
-import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.model.Entity
+import org.beangle.data.dao.OqlBuilder
+import org.beangle.data.model.Entity
 
 
 /**

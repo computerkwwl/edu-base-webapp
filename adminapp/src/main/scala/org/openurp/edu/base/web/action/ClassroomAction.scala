@@ -2,8 +2,8 @@ package org.openurp.edu.base.web.action
 
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.edu.base.model.Classroom
-import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.model.Entity
+import org.beangle.data.dao.OqlBuilder
+import org.beangle.data.model.Entity
 import org.openurp.code.edu.model.ClassroomType
 import org.openurp.base.model.Room
 import org.openurp.base.model.School
@@ -12,6 +12,8 @@ import org.beangle.webmvc.api.annotation.action
 import org.openurp.base.model.Campus
 import org.beangle.webmvc.api.view.View
 import org.openurp.edu.base.web.action.helper.QueryHelper
+import java.time.Instant
+import java.time.LocalDate
 
 @action("{project}/classroom")
 class ClassroomAction extends ProjectRestfulAction[Classroom] {
@@ -26,8 +28,8 @@ class ClassroomAction extends ProjectRestfulAction[Classroom] {
   }
 
   override protected def saveAndRedirect(entity: Classroom): View = {
-    entity.updatedAt = new java.util.Date();
-    entity.beginOn = new java.sql.Date(System.currentTimeMillis);
+    entity.updatedAt = Instant.now
+    entity.beginOn = LocalDate.now()
     super.saveAndRedirect(entity)
   }
 

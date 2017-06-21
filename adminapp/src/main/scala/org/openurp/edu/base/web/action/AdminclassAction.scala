@@ -1,7 +1,7 @@
 package org.openurp.edu.base.web.action
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.dao.OqlBuilder
+import org.beangle.data.dao.OqlBuilder
 import org.beangle.commons.lang.{ ClassLoaders, Strings }
 import org.beangle.data.transfer.TransferListener
 import org.beangle.data.transfer.listener.ForeignerListener
@@ -78,7 +78,7 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     val beans = new java.util.HashMap[String, Any]
     beans.put("list", list)
     //获得模板路径
-    val path = ClassLoaders.getResourceAsStream("template/adminclass.xls")
+    val path = ClassLoaders.getResourceAsStream("template/adminclass.xls").get
     //准备输出流
     val response = ActionContext.current.response
     response.setContentType("application/x-excel")
@@ -101,7 +101,7 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
    * 下载模板
    */
   def downloadAdminclassStdTemp: View = {
-    Stream(ClassLoaders.getResourceAsStream("template/adminclass.xls"), "application/vnd.ms-excel", "班级信息.xls")
+    Stream(ClassLoaders.getResourceAsStream("template/adminclass.xls").get, "application/vnd.ms-excel", "班级信息.xls")
   }
 
   /**

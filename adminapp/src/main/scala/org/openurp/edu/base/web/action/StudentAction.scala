@@ -4,8 +4,8 @@ import scala.collection.mutable.Buffer
 
 import org.beangle.commons.collection.Order
 import org.beangle.commons.lang.Strings
-import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.model.Entity
+import org.beangle.data.dao.OqlBuilder
+import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.{ action, mapping }
 import org.beangle.webmvc.api.view.View
 import org.beangle.webmvc.entity.action.RestfulAction
@@ -129,7 +129,7 @@ class StudentAction extends RestfulAction[Student] {
 
   @mapping(value = "saveBatchUpdateLabel", method = "put")
   def saveBatchUpdateLabel(): View = {
-    val idclass = entityMetaData.getType(entityName).get.idType
+    val idclass =  entityDao.domain.getEntity(entityName).get.id.clazz
     val entityId = getId(simpleEntityName, idclass)
     val students: Seq[Student] =
       if (null == entityId) getModels(entityName, ids(simpleEntityName, idclass))

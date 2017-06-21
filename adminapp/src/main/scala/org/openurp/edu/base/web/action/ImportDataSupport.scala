@@ -1,6 +1,6 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.commons.model.Entity
+import org.beangle.data.model.Entity
 import org.beangle.data.transfer.{ EntityTransfer, ImporterFactory, TransferResult }
 import org.beangle.data.transfer.io.TransferFormat
 import org.beangle.data.transfer.listener.ForeignerListener
@@ -20,7 +20,7 @@ trait ImportDataSupport[T <: Entity[_]] {
    * 构建实体导入者
    */
   protected def buildEntityImporter(): EntityTransfer = {
-    buildEntityImporter(entityMetaData.getType(entityType.getName).get.entityClass, "importFile")
+    buildEntityImporter(this.entityDao.domain.getEntity(this.entityName).get.clazz, "importFile")
   }
 
   /**
@@ -47,7 +47,7 @@ trait ImportDataSupport[T <: Entity[_]] {
     //    val formatName = Strings.capitalize(Strings.substringAfterLast(fileName, "."));
     val format = TransferFormat.withName("Xls")
     val importer = ImporterFactory.getEntityImporter(format, is, clazz, null)
-    importer.entityMetadata = this.entityMetaData
+    importer.domain = this.entityDao.domain
     importer.populator = PopulateHelper.populator
     importer
   }

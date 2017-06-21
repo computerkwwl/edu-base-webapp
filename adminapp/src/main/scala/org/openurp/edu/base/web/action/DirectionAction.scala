@@ -1,7 +1,7 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.commons.dao.OqlBuilder
-import org.beangle.commons.model.Entity
+import org.beangle.data.dao.OqlBuilder
+import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.edu.base.model.{ Direction, Major }
@@ -9,6 +9,7 @@ import org.beangle.commons.collection.Order
 import org.beangle.webmvc.api.view.View
 import org.openurp.edu.base.model.DirectionJournal
 import org.openurp.edu.base.web.action.helper.QueryHelper
+import java.time.LocalDate
 
 @action("{project}/direction")
 class DirectionAction extends ProjectRestfulAction[Direction] {
@@ -39,7 +40,7 @@ class DirectionAction extends ProjectRestfulAction[Direction] {
         dj.direction = entity
         dj.depart = departs.head
         dj.education = educations.head
-        dj.beginOn = new java.sql.Date(System.currentTimeMillis())
+        dj.beginOn = LocalDate.now
         entity.journals += dj
       }
     }

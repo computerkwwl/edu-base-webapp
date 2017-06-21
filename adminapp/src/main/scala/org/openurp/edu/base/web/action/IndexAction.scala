@@ -3,8 +3,8 @@ package org.openurp.edu.base.web.action
 import org.openurp.platform.api.app.UrpApp
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.security.context.SecurityContext
-import org.beangle.commons.dao.EntityDao
-import org.beangle.commons.dao.OqlBuilder
+import org.beangle.data.dao.EntityDao
+import org.beangle.data.dao.OqlBuilder
 import org.beangle.security.realm.cas.CasConfig
 import org.beangle.webmvc.api.annotation.param
 import org.beangle.webmvc.api.view.View
@@ -22,6 +22,7 @@ import org.beangle.security.mgt.SecurityManager
 import org.openurp.edu.base.model.Project
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.platform.api.security.RemoteService
+import java.time.LocalDate
 
 /**
  * @author xinzhou
@@ -58,7 +59,7 @@ class IndexAction extends ActionSupport {
   }
 
   def index(): View = {
-    val now = new java.sql.Date(System.currentTimeMillis())
+    val now = LocalDate.now
     val builder = OqlBuilder.from(classOf[Project], "p").where("p.beginOn <= :now and( p.endOn is null or p.endOn >= :now)", now).orderBy("p.code").cacheable()
     val projects = entityDao.search(builder)
     if (projects.isEmpty) throw new RuntimeException("Cannot find any valid projects")

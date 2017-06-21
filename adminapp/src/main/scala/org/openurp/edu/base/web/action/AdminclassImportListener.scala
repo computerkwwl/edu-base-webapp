@@ -1,6 +1,6 @@
 package org.openurp.edu.base.web.action
 
-import org.beangle.commons.dao.EntityDao
+import org.beangle.data.dao.EntityDao
 import org.beangle.data.transfer.TransferListener
 import org.beangle.data.transfer.TransferResult
 

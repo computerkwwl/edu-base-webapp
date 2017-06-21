@@ -1,7 +1,7 @@
 package org.openurp.edu.base.web.action
 
 import org.beangle.commons.bean.Properties
-import org.beangle.commons.dao.OqlBuilder
+import org.beangle.data.dao.OqlBuilder
 import org.beangle.commons.lang.Strings
 import org.beangle.webmvc.api.annotation.action
 import org.beangle.webmvc.api.view.View
@@ -16,10 +16,11 @@ import org.openurp.edu.base.model.Teacher
 import org.openurp.edu.base.web.action.helper.QueryHelper
 import org.openurp.people.base.model.Name
 import org.openurp.people.base.model.Person
+import java.time.Instant
 
 @action("{project}/teacher")
 class TeacherAction extends ProjectRestfulAction[Teacher] {
-  
+
   override def getQueryBuilder(): OqlBuilder[Teacher] = {
     QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
@@ -51,7 +52,7 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
         user.category.id = 1
         user.beginOn = entity.beginOn
         user.endOn = entity.endOn
-        user.updatedAt = new java.util.Date
+        user.updatedAt = Instant.now
       }
 
       var person = populate(classOf[Person])
@@ -60,18 +61,18 @@ class TeacherAction extends ProjectRestfulAction[Teacher] {
         if (people.size == 0) {
           person.name = new Name
           person.name.formatedName = user.name
-          person.updatedAt = new java.util.Date
+          person.updatedAt = Instant.now
         } else if (people.size == 1) {
           person = people.head
           if (!user.persisted) user.name = person.name.formatedName
         }
       }
       entity.user = user
-      entity.updatedAt = new java.util.Date
+      entity.updatedAt = Instant.now
       try {
-        if (Strings.isNotEmpty( person.code)) {
+        if (Strings.isNotEmpty(person.code)) {
           entityDao.saveOrUpdate(user, person, entity)
-        }else{
+        } else {
           entityDao.saveOrUpdate(user, entity)
         }
         redirect("search", "info.save.success")
