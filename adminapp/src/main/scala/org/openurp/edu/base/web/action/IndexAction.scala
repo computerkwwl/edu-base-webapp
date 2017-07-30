@@ -34,7 +34,7 @@ class IndexAction extends ActionSupport {
   var securityManager: SecurityManager = _
 
   @mapping("{project}")
-  def project(@param("project") project: String): String = {
+  def project(@param("project") project: String): View = {
     put("menuJson", RemoteService.getMenusJson())
     put("appJson", RemoteService.getAppsJson())
     val projects = entityDao.findBy(classOf[Project], "code", List(project))
