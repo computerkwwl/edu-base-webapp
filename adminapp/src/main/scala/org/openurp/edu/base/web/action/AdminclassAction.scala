@@ -1,20 +1,19 @@
 package org.openurp.edu.base.web.action
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.{ ClassLoaders, Strings }
 import org.beangle.data.dao.OqlBuilder
-import org.beangle.data.model.Entity
+import org.beangle.commons.lang.{ ClassLoaders, Strings }
+import org.beangle.data.transfer.TransferListener
 import org.beangle.data.transfer.listener.ForeignerListener
 import org.beangle.webmvc.api.annotation.{ action, mapping, param }
 import org.beangle.webmvc.api.context.ActionContext
 import org.beangle.webmvc.api.view.{ Status, Stream, View }
-import org.beangle.webmvc.entity.action.RestfulAction
-import org.openurp.base.model.Department
+import org.openurp.base.model.{ Campus, Department }
 import org.openurp.edu.base.code.model.{ Education, StdType }
 import org.openurp.edu.base.model.{ Adminclass, Direction, Instructor, Major, Student, StudentState, Teacher }
+import org.openurp.edu.base.web.action.helper.QueryHelper
+
 import net.sf.jxls.transformer.XLSTransformer
-import org.beangle.data.transfer.TransferListener
-import org.openurp.base.model.Campus
 
 @action("{project}/adminclass")
 class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataSupport[Adminclass] {
@@ -23,6 +22,11 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     put("educations", findItems(classOf[Education]))
     put("departments", findItemsBySchool(classOf[Department]))
     put("campuses", findItemsBySchool(classOf[Campus]))
+    println(this)
+  }
+
+  override def getQueryBuilder(): OqlBuilder[Adminclass] = {
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
   }
 
   override def editSetting(entity: Adminclass) = {
@@ -52,9 +56,8 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
    * 查看班级信息
    * @return @
    */
-
   @mapping(value = "{id}")
-  override def info(@param("id") id: String): String = {
+  override def info(@param("id") id: String): View = {
     val builder = OqlBuilder.from(classOf[StudentState], "studentState")
     builder.where("studentState.adminclass.id=:id", id.toLong)
     val studentStates = entityDao.search(builder)
@@ -75,7 +78,7 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     val beans = new java.util.HashMap[String, Any]
     beans.put("list", list)
     //获得模板路径
-    val path = ClassLoaders.getResourceAsStream("template/adminclass.xls")
+    val path = ClassLoaders.getResourceAsStream("template/adminclass.xls").get
     //准备输出流
     val response = ActionContext.current.response
     response.setContentType("application/x-excel")
@@ -98,14 +101,14 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
    * 下载模板
    */
   def downloadAdminclassStdTemp: View = {
-    Stream(ClassLoaders.getResourceAsStream("template/adminclass.xls"), "application/vnd.ms-excel", "班级信息.xls")
+    Stream(ClassLoaders.getResourceAsStream("template/adminclass.xls").get, "application/vnd.ms-excel", "班级信息.xls")
   }
 
   /**
    * 维护班级学生
    */
 
-  def setClassStudentForm(): String = {
+  def setClassStudentForm(): View = {
     val adminclassId = longId("adminclass")
     val adminclass = entityDao.get(classOf[Adminclass], adminclassId)
     put("adminclass", adminclass)
@@ -180,57 +183,6 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     List(new ForeignerListener(entityDao), new AdminclassImportListener(entityDao))
   }
 
-  /**
-   * 根据条件查询不是现在班级内的学生的其他学生信息
-   *
-   * @return
-   */
-  def addClassStudentList(): String = {
-    val builder = OqlBuilder.from(classOf[StudentState], "ss")
-    val studentState = populate(classOf[StudentState], "studentState")
-    val adminclassId = longId("adminclass")
-    val adminclass = entityDao.get(classOf[Adminclass], adminclassId)
-    // 第一次进入查询学生页面
-    if (getBoolean("first") != null && getBoolean("first", true)) {
-      //      studentState.grade = adminclass.grade
-      //      studentState.department = adminclass.department
-      //      studentState.major = adminclass.major
-      //      studentState.adminclass = adminclass
-      builder.where("ss.grade = :grade", adminclass.grade)
-      builder.where("ss.department.name = :department", adminclass.department.name)
-      //      builder.where("ss.major.name = :major", adminclass.major.name)
-    } else {
-      // 根据输入的条件
-      if (studentState.std.code != null)
-        builder.where("ss.std.code like :code", "%" + studentState.std.code + "%")
-      if (studentState.std.person.name != null)
-        builder.where("ss.std.person.name like :name", "%" + studentState.std.person.name.formatedName + "%")
-      if (studentState.grade != null)
-        builder.where("ss.grade like :grade", "%" + studentState.grade + "%")
-      if (studentState.department != null && studentState.department.name != null)
-        builder.where("ss.department.name like :department", "%" + studentState.department.name + "%")
-      if (studentState.major != null && studentState.major.name != null)
-        builder.where("ss.major.name like :major", "%" + studentState.major.name + "%")
-      studentState.adminclass foreach { a =>
-        if (a.name != null)
-          builder.where("ss.adminclass.name like :adminclass", "%" + a.name + "%")
-      }
-    }
-    // 不是本班级的学生
-    builder.where("ss.adminclass is null or ss.adminclass.id <> :adminClass", longId("adminclass"))
-    builder.where("ss.department in (:departments)", getDeparts())
-    //    builder.where("ss.education in (:educations)", getEducations())
-    builder.orderBy("ss.std.code desc")
-    builder.limit(getPageLimit)
-    val studentStates = entityDao.search(builder)
-    put("studentStates", studentStates)
-    put("adminclass", adminclass)
-    put("adminclassId", adminclassId)
-    put("student", studentStates.head.std)
-    put("stdCodes", get("stdCodes")) // 已经输入的学生
-    return forward()
-  }
-
   def getDeparts(): Seq[Department] = {
     val builder = OqlBuilder.from(classOf[Department])
     builder.orderBy("code")
@@ -242,49 +194,5 @@ class AdminclassAction extends ProjectRestfulAction[Adminclass] with ImportDataS
     builder.orderBy("code")
     entityDao.search(builder)
   }
-
-  /**
-   * 根据学号或名称查询学生
-   *
-   * @return
-   */
-  def addClassStudent(): String = {
-    var codes = get("stdCodes").orNull
-    if (Strings.isNotEmpty(codes)) {
-      codes = codes.replaceAll("[\\s，；]", ",").replaceAll(",,", ",")
-      val projectId = getInt("student.project.id").get
-      val studentList = Collections.newBuffer[Student]
-      val notAddCodes = Collections.newBuffer[String]
-
-      val codeArr = Strings.split(codes)
-      val codeIterater = codeArr.iterator
-      while (codeIterater.hasNext) {
-        val students = entityDao.findBy(classOf[Student], "code", List(codeIterater.next()))
-        var b = false // 是否存在可以使用的学号
-        if (!students.isEmpty) {
-          val std = students.head
-          if (std.project.id.equals(projectId) && !studentList.contains(std)) {
-            studentList += std
-            b = true
-          }
-        } else {
-          val students1 = entityDao.search(OqlBuilder.from(classOf[Student], "c").where("c.person.name.formatedName like :name", "%" + codeIterater.next().trim() + "%"))
-          students1.foreach { std =>
-            if (std.project.id.equals(projectId) && !studentList.contains(std)) {
-              studentList += std
-              b = true
-            }
-          }
-        }
-        if (!b) {
-          notAddCodes += codeIterater.next()
-        }
-      }
-      put("studentList", studentList)
-      put("notAddCodes", notAddCodes)
-    }
-    return forward()
-  }
-
 }
 

@@ -76,11 +76,11 @@ class ProjectAction extends RestfulAction[Project] {
     val labelsIds = getAll("labelsId2nd", classOf[Int])
     entity.stdLabels ++= entityDao.find(classOf[StdLabel], labelsIds)
 
-    entity.stdLabels.clear()
+    entity.stdTypes.clear()
     val typesIds = getAll("typesId2nd", classOf[Int])
     entity.stdTypes ++= entityDao.find(classOf[StdType], typesIds)
 
-    entity.stdLabels.clear()
+    entity.calendars.clear()
     val calendarIds = getAll("calendarId2nd", classOf[Int])
     entity.calendars ++= entityDao.find(classOf[Calendar], calendarIds)
 

@@ -22,6 +22,7 @@ import org.beangle.security.mgt.SecurityManager
 import org.openurp.edu.base.model.Project
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.platform.api.security.RemoteService
+import java.time.LocalDate
 
 /**
  * @author xinzhou
@@ -33,7 +34,7 @@ class IndexAction extends ActionSupport {
   var securityManager: SecurityManager = _
 
   @mapping("{project}")
-  def project(@param("project") project: String): String = {
+  def project(@param("project") project: String): View = {
     put("menuJson", RemoteService.getMenusJson())
     put("appJson", RemoteService.getAppsJson())
     val projects = entityDao.findBy(classOf[Project], "code", List(project))
@@ -58,7 +59,7 @@ class IndexAction extends ActionSupport {
   }
 
   def index(): View = {
-    val now = new java.sql.Date(System.currentTimeMillis())
+    val now = LocalDate.now
     val builder = OqlBuilder.from(classOf[Project], "p").where("p.beginOn <= :now and( p.endOn is null or p.endOn >= :now)", now).orderBy("p.code").cacheable()
     val projects = entityDao.search(builder)
     if (projects.isEmpty) throw new RuntimeException("Cannot find any valid projects")

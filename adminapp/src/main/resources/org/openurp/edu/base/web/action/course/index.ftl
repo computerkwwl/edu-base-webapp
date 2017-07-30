@@ -9,6 +9,7 @@
       [@b.textfields names="course.name;名称"/]
       [@b.select style="width:100px" name="course.courseType.id" label="课程类别" items=courseTypes option="id,name" empty="..." /]
       [@b.select style="width:100px" name="course.department.id" label="所属部门" items=departments option="id,name" empty="..." /]
+      [@b.select style="width:100px" name="active" label="是否有效" items={"1":"是", "0":"否"} empty="..." /]
       <input type="hidden" name="orderBy" value="course.code"/>
     [/@]
     </td>

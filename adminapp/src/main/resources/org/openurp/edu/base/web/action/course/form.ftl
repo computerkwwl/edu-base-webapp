@@ -11,7 +11,7 @@
       items1st=educations items2nd= course.educations
       option="id,name"  required="true" /]
     [@b.select name="course.category.id" label="课程种类代码" value="${(course.category.id)!}" required="true" 
-               style="width:200px;" items=categories option="id,name" empty="..."/]
+               style="width:200px;" items=categories option="id,name" empty="..." /]
     [@b.textfield name="course.credits" label="学分" value="${course.credits!}" required="true" maxlength="20"/]
     [@b.textfield name="course.period" label="学时" value="${course.period!}" maxlength="100"/]
     [@b.textfield name="course.weekHour" label="周课时" value="${course.weekHour!}" required="true" maxlength="20"/]
@@ -20,7 +20,7 @@
                style="width:200px;" items=departments option="id,name" empty="..."/]
     [@b.datepicker name="course.beginOn" label="设立时间" value=course.beginOn! required="true" /]
     [@b.select name="course.courseType.id" label="建议课程类别" value="${(course.courseType.id)!}"  
-               style="width:200px;" items=courseTypes option="id,name" empty="..."/]
+               style="width:200px;" items=courseTypes option="id,name" empty="..." required="true"/]
     [@b.select name="course.examMode.id" label="考试方式" value="${(course.examMode.id)!}" required="true" 
                style="width:200px;" items=examModes option="id,name" empty="..."/]
     [@b.select name="course.markStyle.id" label="成绩记录方式" value="${(course.markStyle.id)!}" required="true" 

@@ -5,9 +5,15 @@ import org.beangle.data.model.Entity
 import org.beangle.webmvc.api.annotation.action
 import org.openurp.edu.base.model.{ Direction, Major, MajorDiscipline, Project }
 import org.beangle.webmvc.entity.action.RestfulAction
+import org.openurp.edu.base.web.action.helper.QueryHelper
 
 @action("{project}/major")
 class MajorAction extends ProjectRestfulAction[Major] {
+  
+  override def getQueryBuilder(): OqlBuilder[Major] = {
+    QueryHelper.addTemporalOn(super.getQueryBuilder(), getBoolean("active"))
+  }
+  
   override def editSetting(entity: Major) = {
 
     val projects = findItems(classOf[Project])

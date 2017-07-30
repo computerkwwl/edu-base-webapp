@@ -8,6 +8,7 @@
       [@b.textfields names="classroom.code;代码"/]
       [@b.textfields names="classroom.name;名称"/]
       [@b.select style="width:100px" name="classroom.roomType.id" label="教室类型" items=roomTypes option="id,name" empty="..." /]
+      [@b.select style="width:100px" name="active" label="是否有效" items={"1":"是", "0":"否"} empty="..." /]
       <input type="hidden" name="orderBy" value="classroom.code"/>
     [/@]
     </td>

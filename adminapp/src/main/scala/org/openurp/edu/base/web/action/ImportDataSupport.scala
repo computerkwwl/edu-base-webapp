@@ -9,18 +9,19 @@ import org.beangle.webmvc.entity.helper.PopulateHelper
 import javax.servlet.http.Part
 import org.beangle.data.transfer.TransferListener
 import org.beangle.webmvc.entity.action.RestfulAction
+import org.beangle.webmvc.api.view.View
 
 trait ImportDataSupport[T <: Entity[_]] {
   self: RestfulAction[T] =>
 
-  def importForm: String = {
+  def importForm: View = {
     forward("/components/importData/form")
   }
   /**
    * 构建实体导入者
    */
   protected def buildEntityImporter(): EntityTransfer = {
-    buildEntityImporter(entityMetaData.getType(entityType.getName).get.entityClass, "importFile")
+    buildEntityImporter(this.entityDao.domain.getEntity(this.entityName).get.clazz, "importFile")
   }
 
   /**
@@ -47,7 +48,7 @@ trait ImportDataSupport[T <: Entity[_]] {
     //    val formatName = Strings.capitalize(Strings.substringAfterLast(fileName, "."));
     val format = TransferFormat.withName("Xls")
     val importer = ImporterFactory.getEntityImporter(format, is, clazz, null)
-    importer.entityMetadata = this.entityMetaData
+    importer.domain = this.entityDao.domain
     importer.populator = PopulateHelper.populator
     importer
   }
@@ -55,7 +56,7 @@ trait ImportDataSupport[T <: Entity[_]] {
   /**
    * 导入信息
    */
-  def importData(): String = {
+  def importData(): View = {
     val tr = new TransferResult();
     val importer = buildEntityImporter();
     if (null == importer) { return forward("/components/importData/error"); }
