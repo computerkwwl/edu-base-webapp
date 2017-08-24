@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.2</version>
   </parent>
   <groupId>org.openurp.edu.base</groupId>
   <artifactId>openurp-edu-base-web-parent</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <packaging>pom</packaging>
   <name>OpenURP Edu Base Web Parent</name>
 
@@ -17,8 +17,8 @@
   </modules>
 
   <properties>
-    <openurp.platform.version>0.0.20</openurp.platform.version>
-    <openurp.api.version>0.0.18</openurp.api.version>
+    <openurp.platform.version>0.0.23</openurp.platform.version>
+    <openurp.api.version>0.0.20</openurp.api.version>
     <jxls.version>1.0.3</jxls.version>
   </properties>
 
